@@ -136,11 +136,11 @@
     <div region="north" split="true" border="false" style="overflow: hidden; height: 30px;
         background: url(../images/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%;
         line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
-        <span style="float:right; padding-right:20px;" class="head">欢迎 16素材 <a href="#" id="editpass">修改密码</a> <a href="#" id="loginOut">安全退出</a></span>
-        <span style="padding-left:10px; font-size: 16px; "><img src="<%=context %>/images/blocks.gif" width="20" height="20" align="absmiddle" /> 16素材网  www.16sucai.com</span>
+        <span style="float:right; padding-right:20px;" class="head">欢迎 使用本系统 <a href="#" id="editpass">修改密码</a> <a href="#" id="loginOut">安全退出</a></span>
+        <span style="padding-left:10px; font-size: 16px; "><img src="<%=context %>/images/blocks.gif" width="20" height="20" align="absmiddle" /></span>
     </div>
     <div region="south" split="true" style="height: 30px; background: #D2E0F2; ">
-        <div class="footer">By 疯狂秀才 Email:bjhxl@59ibox.cn</div>
+        <div class="footer">By lsq</div>
     </div>
     <div region="west" split="true" title="导航菜单" style="width:180px;" id="west">
 <!-- <div class="easyui-accordion" fit="true" border="false"> -->
