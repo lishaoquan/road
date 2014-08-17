@@ -146,14 +146,25 @@
 <!-- <div class="easyui-accordion" fit="true" border="false"> -->
 		<!--  导航内容 start-->
 	<div id="leftMenu" style="width:180px;height:auto;padding:0;">
-	<c:forEach items="${menuInfo}" var="menu">
-	   <div class="easyui-panel" title="${menu.menuName}" collapsible="true" style="width:180px;height:auto;padding:0;">
+	<c:forEach items="${menuInfo}" var="menu" varStatus="status">
+	   <c:if test="${status.index eq 0}">
+	     <div class="easyui-panel" title="${menu.menuName}" collapsible="true" style="width:180px;height:auto;padding:0;">
 		    <ul>
 		    <c:forEach items="${menu.childrenMenu}" var="secondMenu">
 		    <li><div><a target="mainFrame" href="${secondMenu.url}">${secondMenu.menuName}</a></div></li>
 			</c:forEach>
 			</ul>
 		</div>
+	   </c:if>
+	   <c:if test="${status.index gt 0}">
+	     <div class="easyui-panel" title="${menu.menuName}" collapsible="true" collapsed="true" style="width:180px;height:auto;padding:0;">
+		    <ul>
+		    <c:forEach items="${menu.childrenMenu}" var="secondMenu">
+		    <li><div><a target="mainFrame" href="${secondMenu.url}">${secondMenu.menuName}</a></div></li>
+			</c:forEach>
+			</ul>
+		</div>
+	   </c:if>
 	</c:forEach>
 	</div>
 		<!--  导航内容 end-->
