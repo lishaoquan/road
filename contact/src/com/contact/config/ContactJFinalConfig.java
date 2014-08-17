@@ -6,6 +6,9 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
+import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.activerecord.tx.TxByActionMethods;
+import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
 
 /**
@@ -35,13 +38,13 @@ public class ContactJFinalConfig extends JFinalConfig {
 	 * 此方法用来配置 JFinal 的 Plugin
 	 */
 	public void configPlugin(Plugins me) {
+		//配置数据源
 		loadPropertyFile("db.properties");
-		System.out.println(getProperty("jdbcUrl"));
-		// C3p0Plugin c3p0Plugin = new C3p0Plugin(getProperty("jdbcUrl"),
-		// getProperty("user"), getProperty("password"));
-		// me.add(c3p0Plugin);
-		// ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
-		// me.add(arp);
+		 C3p0Plugin c3p0Plugin = new C3p0Plugin(getProperty("db.url"),
+		 getProperty("db.user"), getProperty("db.password"));
+		 me.add(c3p0Plugin);
+		 ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
+		 me.add(arp);
 		// arp.addMapping("user", User.class);
 	}
 
@@ -49,6 +52,10 @@ public class ContactJFinalConfig extends JFinalConfig {
 	 * 此方法用来配置 JFinal 的 Interceptor
 	 */
 	public void configInterceptor(Interceptors me) {
+//		me.add(new TxByRegex(".*save.*"));
+//		me.add(new TxByActionKeys("/test", "/other"));
+		//添加声明式事务处理
+		me.add(new TxByActionMethods("save", "update","remove","load"));
 	}
 
 	/**
