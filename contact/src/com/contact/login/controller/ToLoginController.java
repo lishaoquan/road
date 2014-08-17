@@ -16,13 +16,13 @@ public class ToLoginController extends Controller {
 	 * 转向登录界面（此默认）
 	 */
 	public void index() {
-		render("/login.jsp");
+		renderJsp("/login.jsp");
 		}
 	
 	/**
 	 * 转向登录界面
 	 */
 	public void login() {
-		render("/login.jsp");
+		renderJsp("/login.jsp");
 		}
 }

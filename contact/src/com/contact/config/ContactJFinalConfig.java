@@ -26,7 +26,7 @@ public class ContactJFinalConfig extends JFinalConfig {
 	 */
 	public void configRoute(Routes me) {
 		me.add("/hello", HelloWordController.class);
-		me.add("/home/login", LoginController.class);
+		me.add("/home", LoginController.class);
 		me.add("/", ToLoginController.class);
 	}
 

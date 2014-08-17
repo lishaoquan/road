@@ -3,12 +3,8 @@
  */
 package com.contact.login.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.contact.menu.model.Menu;
 import com.jfinal.core.ActionKey;
@@ -26,26 +22,20 @@ public class LoginController extends Controller{
 	 */
 	@ActionKey("/home/login")
 	public void login() {
-		HttpServletRequest request = getRequest();
-		HttpServletResponse response = getResponse();
 		//模拟用户登录
-		String role = request.getParameter("role");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String role = getPara("role");
+		String username = getPara("username");
+		String password = getPara("password");
 		//在登录页面操作之前将session信息清空
-		request.getSession().removeAttribute("fromLogin");
-		request.getSession().removeAttribute("userInfo");
+		removeSessionAttr("fromLogin");
+		removeSessionAttr("userInfo");
 		if (!username.equals("admin") && !password.equals("admin")){
-			request.getSession().setAttribute("fromLogin",true);
-			try {
-				response.sendRedirect(request.getContextPath() + "/login.jsp");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			setSessionAttr("fromLogin",true);
+			redirect("/login.jsp");
 			return;
 		}
 		//如果用户通过验证，则将用户信息设置到session中
-		request.getSession().setAttribute("userInfo", "admin");
+		setSessionAttr("userInfo", "admin");
 		//这里模拟数据库中获取菜单信息并进行组装
 		List<Menu> mList = new ArrayList<Menu>();
 		Menu p1 = new Menu();
@@ -111,11 +101,7 @@ public class LoginController extends Controller{
 		mList.add(p2);
 		mList.add(p3);
 		mList.add(p4);
-		request.getSession().setAttribute("menuInfo", mList);
-		try {
-			response.sendRedirect(request.getContextPath() + "/pages/index.jsp");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		setSessionAttr("menuInfo", mList);
+		redirect("/pages/index.jsp");
 	}
 }
