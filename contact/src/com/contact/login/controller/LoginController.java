@@ -117,6 +117,5 @@ public class LoginController extends Controller{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		render("/login.jsp");
-		}
+	}
 }
