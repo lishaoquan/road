@@ -1,5 +1,6 @@
 package com.contact.config;
 
+import com.contact.test.controlller.HelloWordController;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -22,7 +23,7 @@ public class ContactJFinalConfig extends JFinalConfig {
 	 * 此方法用来配置 JFinal 访问路由， 如下代码配置了将”/hello”映射到 HelloController 这个控 制 器
 	 */
 	public void configRoute(Routes me) {
-		//me.add("/hello", HelloController.class);
+		me.add("/hello", HelloWordController.class);
 	}
 
 	/**
