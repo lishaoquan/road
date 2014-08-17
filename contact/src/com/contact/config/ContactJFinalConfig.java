@@ -22,7 +22,8 @@ public class ContactJFinalConfig extends JFinalConfig {
 	 * 此方法用来配置 JFinal 常量值， 如开发模式常量 devMode 的配置
 	 */
 	public void configConstant(Constants me) {
-		me.setDevMode(true);
+		loadPropertyFile("common.properties");
+		me.setDevMode(getPropertyToBoolean("devMode", false));
 		me.setViewType(ViewType.JSP);
 	}
 
@@ -39,7 +40,6 @@ public class ContactJFinalConfig extends JFinalConfig {
 	 */
 	public void configPlugin(Plugins me) {
 		//配置数据源
-		loadPropertyFile("db.properties");
 		 C3p0Plugin c3p0Plugin = new C3p0Plugin(getProperty("db.url"),
 		 getProperty("db.user"), getProperty("db.password"));
 		 System.out.println("数据源连接信息:" + getProperty("db.url"));
