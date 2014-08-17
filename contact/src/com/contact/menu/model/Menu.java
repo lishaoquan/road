@@ -12,8 +12,8 @@ import java.util.TreeSet;
  * @author Administrator
  *
  */
-@SuppressWarnings("serial")
-public class Menu implements Serializable{
+@SuppressWarnings({ "serial", "rawtypes" })
+public class Menu implements Serializable, Comparable{
 	//主键
     private String menuId;
     
@@ -101,4 +101,28 @@ public class Menu implements Serializable{
 		this.url = url;
 	}
 	
+	public int compareTo(Object o) {
+		if (!(o instanceof Menu)) {
+			throw new RuntimeException("在 Menu 类中的compareTo方法参数的类型不匹配");
+		}
+
+		Menu temp = (Menu) o;
+		return String.valueOf(this.sort).compareTo(
+				String.valueOf(temp.getSort()));
+	}
+	
+	/**
+	 * 拷贝该对象
+	 * 
+	 * @return 返回该对象的拷贝
+	 */
+	public Menu cloneMenu() {
+		Menu menu = new Menu();
+		menu.setMenuId(menuId);
+		menu.setMenuName(menuName);
+		menu.setParentId(parentId);
+		menu.setSort(sort);
+		menu.setUrl(url);
+		return menu;
+	}
 }
