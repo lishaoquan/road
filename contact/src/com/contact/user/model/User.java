@@ -6,6 +6,8 @@ package com.contact.user.model;
 import java.io.Serializable;
 import java.util.List;
 
+import com.contact.role.model.Role;
+
 /**
  * 用户模型
  * @author Administrator
@@ -30,7 +32,7 @@ public class User implements Serializable{
     private String email;
     
     //用户角色集合
-    private List role;
+    private List<Role> role;
 
 	public String getId() {
 		return id;
