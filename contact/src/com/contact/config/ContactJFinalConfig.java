@@ -11,6 +11,11 @@ import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.render.ViewType;
 
+/**
+ * Jfinal的核心类，用于提供控制器，插件配置等统一入口
+ * @author Administrator
+ *
+ */
 public class ContactJFinalConfig extends JFinalConfig {
 
 	/**
@@ -25,9 +30,7 @@ public class ContactJFinalConfig extends JFinalConfig {
 	 * 此方法用来配置 JFinal 访问路由， 如下代码配置了将”/hello”映射到 HelloController 这个控 制 器
 	 */
 	public void configRoute(Routes me) {
-		me.add("/hello", HelloWordController.class);
-		me.add("/home", LoginController.class);
-		me.add("/", ToLoginController.class);
+		me.add(new ContactRoutes());
 	}
 
 	/**
