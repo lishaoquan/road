@@ -14,7 +14,7 @@ public class HelloWordController extends Controller {
 	
 	public void index() {
 		renderText("Hello JFinal World.");
-		}
+	}
 	
 	public void other(){
 		renderText("自定义方法.");

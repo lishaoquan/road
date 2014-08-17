@@ -16,7 +16,6 @@ import com.jfinal.core.Controller;
  *
  */
 public class LoginController extends Controller{
-	
 	/**
 	 * 登录处理操作
 	 */
