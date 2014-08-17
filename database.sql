@@ -1,6 +1,7 @@
 --合同系统建表语句
 --version1.0
 
+CREATE DATABASE contact;
 use contact;
 --菜单表
 CREATE TABLE `contact`.`menu` (
