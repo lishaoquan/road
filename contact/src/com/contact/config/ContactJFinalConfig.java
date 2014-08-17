@@ -1,8 +1,5 @@
 package com.contact.config;
 
-import com.contact.login.controller.LoginController;
-import com.contact.login.controller.ToLoginController;
-import com.contact.test.controlller.HelloWordController;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -30,6 +27,7 @@ public class ContactJFinalConfig extends JFinalConfig {
 	 * 此方法用来配置 JFinal 访问路由， 如下代码配置了将”/hello”映射到 HelloController 这个控 制 器
 	 */
 	public void configRoute(Routes me) {
+		//统一设置路由方式
 		me.add(new ContactRoutes());
 	}
 
@@ -37,7 +35,8 @@ public class ContactJFinalConfig extends JFinalConfig {
 	 * 此方法用来配置 JFinal 的 Plugin
 	 */
 	public void configPlugin(Plugins me) {
-		loadPropertyFile("plugins.properties");
+		loadPropertyFile("db.properties");
+		System.out.println(getProperty("jdbcUrl"));
 		// C3p0Plugin c3p0Plugin = new C3p0Plugin(getProperty("jdbcUrl"),
 		// getProperty("user"), getProperty("password"));
 		// me.add(c3p0Plugin);
