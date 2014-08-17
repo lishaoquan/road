@@ -1,37 +1,33 @@
-package com.contact.login.servlet;
+/**
+ * 
+ */
+package com.contact.login.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.contact.menu.model.Menu;
+import com.jfinal.core.ActionKey;
+import com.jfinal.core.Controller;
 
 /**
- * 用户登录
+ * 登录操作的控制器
+ * @author Administrator
+ *
  */
-@WebServlet("/home/login")
-public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    public LoginServlet() {
-        super();
-    }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
-	}
-
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class LoginController extends Controller{
+	
+	/**
+	 * 登录处理操作
+	 */
+	@ActionKey("/home/login")
+	public void login() {
+		HttpServletRequest request = getRequest();
+		HttpServletResponse response = getResponse();
 		//模拟用户登录
 		String role = request.getParameter("role");
 		String username = request.getParameter("username");
@@ -41,7 +37,11 @@ public class LoginServlet extends HttpServlet {
 		request.getSession().removeAttribute("userInfo");
 		if (!username.equals("admin") && !password.equals("admin")){
 			request.getSession().setAttribute("fromLogin",true);
-			response.sendRedirect(request.getContextPath() + "/login.jsp");
+			try {
+				response.sendRedirect(request.getContextPath() + "/login.jsp");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			return;
 		}
 		//如果用户通过验证，则将用户信息设置到session中
@@ -112,6 +112,11 @@ public class LoginServlet extends HttpServlet {
 		mList.add(p3);
 		mList.add(p4);
 		request.getSession().setAttribute("menuInfo", mList);
-		response.sendRedirect(request.getContextPath() + "/pages/index.jsp");
-	}
+		try {
+			response.sendRedirect(request.getContextPath() + "/pages/index.jsp");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		render("/login.jsp");
+		}
 }
