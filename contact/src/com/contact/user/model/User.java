@@ -74,11 +74,11 @@ public class User implements Serializable{
 		this.email = email;
 	}
 
-	public List getRole() {
+	public List<Role> getRole() {
 		return role;
 	}
 
-	public void setRole(List role) {
+	public void setRole(List<Role> role) {
 		this.role = role;
 	}
 }
