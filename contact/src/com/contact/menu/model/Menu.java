@@ -4,8 +4,8 @@
 package com.contact.menu.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * ²Ëµ¥Ä£ĞÍ
@@ -81,14 +81,14 @@ public class Menu implements Serializable{
 
 	public void setChildrenMenu(Set<Menu> childrenMenu) {
 		if (null == childrenMenu){
-			childrenMenu = new HashSet<Menu>();
+			childrenMenu = new TreeSet<Menu>();
 		}
 		this.childrenMenu = childrenMenu;
 	}
 
 	public void addChildMenu(Menu childMenu){
 		if (null == childrenMenu){
-			childrenMenu = new HashSet<Menu>();
+			childrenMenu = new TreeSet<Menu>();
 		}
 		this.childrenMenu.add(childMenu);
 	}
