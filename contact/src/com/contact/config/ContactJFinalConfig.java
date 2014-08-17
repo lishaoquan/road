@@ -42,6 +42,7 @@ public class ContactJFinalConfig extends JFinalConfig {
 		loadPropertyFile("db.properties");
 		 C3p0Plugin c3p0Plugin = new C3p0Plugin(getProperty("db.url"),
 		 getProperty("db.user"), getProperty("db.password"));
+		 System.out.println("数据源连接信息:" + getProperty("db.url"));
 		 me.add(c3p0Plugin);
 		 ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
 		 me.add(arp);
