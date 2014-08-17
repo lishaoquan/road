@@ -6,7 +6,7 @@ import com.contact.test.controlller.HelloWordController;
 import com.jfinal.config.Routes;
 
 /**
- * 合同中的路由配置
+ * 鍚堝悓涓殑璺敱閰嶇疆
  * @author Administrator
  *
  */

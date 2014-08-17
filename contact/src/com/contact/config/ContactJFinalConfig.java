@@ -12,14 +12,14 @@ import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
 
 /**
- * JfinalµÄºËĞÄÀà£¬ÓÃÓÚÌá¹©¿ØÖÆÆ÷£¬²å¼şÅäÖÃµÈÍ³Ò»Èë¿Ú
+ * Jfinalçš„æ ¸å¿ƒç±»ï¼Œç”¨äºæä¾›æ§åˆ¶å™¨ï¼Œæ’ä»¶é…ç½®ç­‰ç»Ÿä¸€å…¥å£
  * @author Administrator
  *
  */
 public class ContactJFinalConfig extends JFinalConfig {
 
 	/**
-	 * ´Ë·½·¨ÓÃÀ´ÅäÖÃ JFinal ³£Á¿Öµ£¬ Èç¿ª·¢Ä£Ê½³£Á¿ devMode µÄÅäÖÃ
+	 * æ­¤æ–¹æ³•ç”¨æ¥é…ç½® JFinal å¸¸é‡å€¼ï¼Œ å¦‚å¼€å‘æ¨¡å¼å¸¸é‡ devMode çš„é…ç½®
 	 */
 	public void configConstant(Constants me) {
 		loadPropertyFile("common.properties");
@@ -28,21 +28,21 @@ public class ContactJFinalConfig extends JFinalConfig {
 	}
 
 	/**
-	 * ´Ë·½·¨ÓÃÀ´ÅäÖÃ JFinal ·ÃÎÊÂ·ÓÉ£¬ ÈçÏÂ´úÂëÅäÖÃÁË½«¡±/hello¡±Ó³Éäµ½ HelloController Õâ¸ö¿Ø ÖÆ Æ÷
+	 * æ­¤æ–¹æ³•ç”¨æ¥é…ç½® JFinal è®¿é—®è·¯ç”±ï¼Œ å¦‚ä¸‹ä»£ç é…ç½®äº†å°†â€/helloâ€æ˜ å°„åˆ° HelloController è¿™ä¸ªæ§ åˆ¶ å™¨
 	 */
 	public void configRoute(Routes me) {
-		//Í³Ò»ÉèÖÃÂ·ÓÉ·½Ê½
+		//ç»Ÿä¸€è®¾ç½®è·¯ç”±æ–¹å¼
 		me.add(new ContactRoutes());
 	}
 
 	/**
-	 * ´Ë·½·¨ÓÃÀ´ÅäÖÃ JFinal µÄ Plugin
+	 * æ­¤æ–¹æ³•ç”¨æ¥é…ç½® JFinal çš„ Plugin
 	 */
 	public void configPlugin(Plugins me) {
-		//ÅäÖÃÊı¾İÔ´
+		//é…ç½®æ•°æ®æº
 		 C3p0Plugin c3p0Plugin = new C3p0Plugin(getProperty("db.url"),
 		 getProperty("db.user"), getProperty("db.password"));
-		 System.out.println("Êı¾İÔ´Á¬½ÓĞÅÏ¢:" + getProperty("db.url"));
+		 System.out.println("æ•°æ®æºè¿æ¥ä¿¡æ¯:" + getProperty("db.url"));
 		 me.add(c3p0Plugin);
 		 ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
 		 me.add(arp);
@@ -50,17 +50,17 @@ public class ContactJFinalConfig extends JFinalConfig {
 	}
 
 	/**
-	 * ´Ë·½·¨ÓÃÀ´ÅäÖÃ JFinal µÄ Interceptor
+	 * æ­¤æ–¹æ³•ç”¨æ¥é…ç½® JFinal çš„ Interceptor
 	 */
 	public void configInterceptor(Interceptors me) {
 //		me.add(new TxByRegex(".*save.*"));
 //		me.add(new TxByActionKeys("/test", "/other"));
-		//Ìí¼ÓÉùÃ÷Ê½ÊÂÎñ´¦Àí
+		//æ·»åŠ å£°æ˜å¼äº‹åŠ¡å¤„ç†
 		me.add(new TxByActionMethods("save", "update","remove","load"));
 	}
 
 	/**
-	 * ´Ë·½·¨ÓÃÀ´ÅäÖÃJFinalµÄHandler
+	 * æ­¤æ–¹æ³•ç”¨æ¥é…ç½®JFinalçš„Handler
 	 */
 	public void configHandler(Handlers me) {
 	}

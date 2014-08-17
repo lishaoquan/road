@@ -6,21 +6,21 @@ package com.contact.login.controller;
 import com.jfinal.core.Controller;
 
 /**
- * ×ªÏòµÇÂ¼½çÃæµÄ¿ØÖÆÆ÷
+ * è½¬å‘ç™»å½•ç•Œé¢çš„æ§åˆ¶å™¨
  * @author Administrator
  *
  */
 public class ToLoginController extends Controller {
 	
 	/**
-	 * ×ªÏòµÇÂ¼½çÃæ£¨´ËÄ¬ÈÏ£©
+	 * è½¬å‘ç™»å½•ç•Œé¢ï¼ˆæ­¤é»˜è®¤ï¼‰
 	 */
 	public void index() {
 		renderJsp("/login.jsp");
 		}
 	
 	/**
-	 * ×ªÏòµÇÂ¼½çÃæ
+	 * è½¬å‘ç™»å½•ç•Œé¢
 	 */
 	public void login() {
 		renderJsp("/login.jsp");

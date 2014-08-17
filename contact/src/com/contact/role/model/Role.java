@@ -6,23 +6,23 @@ package com.contact.role.model;
 import java.io.Serializable;
 
 /**
- * ÏµÍ³ÖĞµÄ½ÇÉ«Ä£ĞÍ
+ * ç³»ç»Ÿä¸­çš„è§’è‰²æ¨¡å‹
  * @author Administrator
  *
  */
 @SuppressWarnings("serial")
 public class Role implements Serializable{
     
-	//Ö÷¼ü
+	//ä¸»é”®
 	private String id;
 	
-	//½ÇÉ«Ãû
+	//è§’è‰²å
 	private String roleName;
 	
-	//ÅÅĞò
+	//æ’åº
 	private int sort;
 	
-	//½ÇÉ«ÃèÊö
+	//è§’è‰²æè¿°
 	private String desc;
 
 	public String getId() {

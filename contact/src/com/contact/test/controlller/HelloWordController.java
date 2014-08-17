@@ -6,7 +6,7 @@ package com.contact.test.controlller;
 import com.jfinal.core.Controller;
 
 /**
- * jfinal¿ØÖÆÆ÷²âÊÔ
+ * jfinalæŽ§åˆ¶å™¨æµ‹è¯•
  * @author Administrator
  *
  */
@@ -17,6 +17,6 @@ public class HelloWordController extends Controller {
 		}
 	
 	public void other(){
-		renderText("×Ô¶¨Òå·½·¨.");
+		renderText("è‡ªå®šä¹‰æ–¹æ³•.");
 	}
 }

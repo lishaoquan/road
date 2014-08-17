@@ -5,16 +5,16 @@ import net.sf.json.processors.DefaultValueProcessor;
 import net.sf.json.util.JSONUtils;
 
 /**
- * Ä¬ÈÏµÄÉú³É²ßÂÔ
+ * é»˜è®¤çš„ç”Ÿæˆç­–ç•¥
  * 
  */
 public class OurDefaultValueProcessor implements DefaultValueProcessor {
 
 	/**
-	 * µÃµ½Ä¬ÈÏµÄÖµ
+	 * å¾—åˆ°é»˜è®¤çš„å€¼
 	 * 
 	 * @param type
-	 *            java¶ÔÏó
+	 *            javaå¯¹è±¡
 	 */
 	@SuppressWarnings("rawtypes")
 	public Object getDefaultValue(Class type) {

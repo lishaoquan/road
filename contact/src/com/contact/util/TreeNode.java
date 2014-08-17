@@ -9,68 +9,68 @@ import java.util.TreeSet;
 import net.sf.json.JSONArray;
 
 /**
- * ÓÃÓÚ±íÊ¾jqueryÖĞµÄÊ÷ĞÎ½á¹¹µÄ±íÏÖĞÎÊ½
+ * ç”¨äºè¡¨ç¤ºjqueryä¸­çš„æ ‘å½¢ç»“æ„çš„è¡¨ç°å½¢å¼
  * @author Administrator
  *
  */
 public class TreeNode implements Comparable<TreeNode> {
 	/**
-	 * ½ÚµãµÄÏÔÊ¾Öµ
+	 * èŠ‚ç‚¹çš„æ˜¾ç¤ºå€¼
 	 */
 	private String text;
 
 	/**
-	 * ½ÚµãµÄid
+	 * èŠ‚ç‚¹çš„id
 	 */
 	private String id;
 
 	/**
-	 * ¸Ã½ÚµãÊÇ·ñÊÇÒ¶×Ó
+	 * è¯¥èŠ‚ç‚¹æ˜¯å¦æ˜¯å¶å­
 	 */
 	private Boolean leaf = new Boolean(true);
 
 	/**
-	 * ½ÚµãµÄÆäËûÊôĞÔ
+	 * èŠ‚ç‚¹çš„å…¶ä»–å±æ€§
 	 */
 	private Map<String, Object> otherProperty = new HashMap<String, Object>();
 
 	/**
-	 * ½ÚµãµÄ×Ó½ÚµãÁĞ±í
+	 * èŠ‚ç‚¹çš„å­èŠ‚ç‚¹åˆ—è¡¨
 	 */
 	private Set<TreeNode> children = new TreeSet<TreeNode>();
 
 	/**
-	 * Ê÷½ÚµãÊÇ·ñÑ¡ÖĞ
+	 * æ ‘èŠ‚ç‚¹æ˜¯å¦é€‰ä¸­
 	 */
 	private Boolean checked = new Boolean(false);
 
 	/**
-	 * ÓÃÓÚÅÅĞòµÄÖµ(Ö»Ìá¹©IntegerºÍString)
+	 * ç”¨äºæ’åºçš„å€¼(åªæä¾›Integerå’ŒString)
 	 */
 	private Object sortValue;
 
 	/**
-	 * ½ÚµãÍ¼±ê
+	 * èŠ‚ç‚¹å›¾æ ‡
 	 */
 	private String icon;
 
 	/**
-	 * ½µĞò
+	 * é™åº
 	 */
 	public static String SORT_STARATEGY_DESC = "desc";
 
 	/**
-	 * ÉıĞò
+	 * å‡åº
 	 */
 	public static String SORT_STARATEGY_ASC = "asc";
 
 	/**
-	 * Ñ¡ÖĞ
+	 * é€‰ä¸­
 	 */
 	public static String CHECKED_NAME = "checked";
 
 	/**
-	 * ÅÅĞò²ßÂÔ
+	 * æ’åºç­–ç•¥
 	 */
 	private String sortStrategy = SORT_STARATEGY_ASC;
 	
@@ -181,10 +181,10 @@ public class TreeNode implements Comparable<TreeNode> {
 	}
 
 	/**
-	 * ¼ÓÈë×Ó½Úµã
+	 * åŠ å…¥å­èŠ‚ç‚¹
 	 * 
 	 * @param treeNode
-	 *            ×Ó½ÚµãNode
+	 *            å­èŠ‚ç‚¹Node
 	 */
 	public void addChild(TreeNode treeNode) {
 		leaf = new Boolean(false);
@@ -192,50 +192,50 @@ public class TreeNode implements Comparable<TreeNode> {
 	}
 	
 	/**
-	 * Ôö¼ÓÊ÷½ÚµãµÄ¶îÍâÊôĞÔ£¬ÊôĞÔÃûºÍÊôĞÔÖµÊÇ´æ·ÅÔÚotherProperty Map¼¯ºÏÖĞ
+	 * å¢åŠ æ ‘èŠ‚ç‚¹çš„é¢å¤–å±æ€§ï¼Œå±æ€§åå’Œå±æ€§å€¼æ˜¯å­˜æ”¾åœ¨otherProperty Mapé›†åˆä¸­
 	 * 
 	 * @param name
-	 *            ÊôĞÔÃû
+	 *            å±æ€§å
 	 * @param value
-	 *            ÊôĞÔµÄÖµ
+	 *            å±æ€§çš„å€¼
 	 */
 	public void addProperty(String name, Object value) {
 		this.otherProperty.put(name, value);
 	}
 
 	/**
-	 * »ñµÃnameËù¶ÔÓ¦µÄÖµ
+	 * è·å¾—nameæ‰€å¯¹åº”çš„å€¼
 	 * 
 	 * @param name
-	 *            ÊôĞÔÃû
-	 * @return ÊôĞÔÖµ
+	 *            å±æ€§å
+	 * @return å±æ€§å€¼
 	 */
 	public Object getProperty(String name) {
 		return this.otherProperty.get(name);
 	}
 	
 	/**
-	 * ÉèÖÃÅÅĞòµÄÖµ(×Ö·û´®)
+	 * è®¾ç½®æ’åºçš„å€¼(å­—ç¬¦ä¸²)
 	 * 
 	 * @param sortValue
-	 *            ÅÅĞòµÄÖµ
+	 *            æ’åºçš„å€¼
 	 */
 	public void setSortValueString(String sortValue) {
 		this.setSortValue(sortValue);
 	}
 
 	/**
-	 * ÉèÖÃÅÅĞòµÄÖµ(ÕûĞÍ)
+	 * è®¾ç½®æ’åºçš„å€¼(æ•´å‹)
 	 * 
 	 * @param intValue
-	 *            ÅÅĞòµÄÖµ
+	 *            æ’åºçš„å€¼
 	 */
 	public void setSortValueInteger(int intValue) {
 		this.setSortValue(new Integer(intValue));
 	}
 
 	/**
-	 * µÃµ½ÕûĞÎµÄÅÅĞòÖµ
+	 * å¾—åˆ°æ•´å½¢çš„æ’åºå€¼
 	 * 
 	 * @return -1
 	 */
@@ -244,7 +244,7 @@ public class TreeNode implements Comparable<TreeNode> {
 	}
 
 	/**
-	 * µÃµ½×Ö·û´®ÀàĞÍµÄÅÅĞòÖµ
+	 * å¾—åˆ°å­—ç¬¦ä¸²ç±»å‹çš„æ’åºå€¼
 	 * 
 	 * @return ""
 	 */
@@ -253,14 +253,14 @@ public class TreeNode implements Comparable<TreeNode> {
 	}
 
 	/**
-	 * µİ¹é²éÕÒÖ¸¶¨±àÂëµÄÊ÷½Úµã£¬²¢½«½á¹û´æ·ÅÔÚResult½á¹û¶ÔÏóÖĞ
+	 * é€’å½’æŸ¥æ‰¾æŒ‡å®šç¼–ç çš„æ ‘èŠ‚ç‚¹ï¼Œå¹¶å°†ç»“æœå­˜æ”¾åœ¨Resultç»“æœå¯¹è±¡ä¸­
 	 * 
 	 * @param node
-	 *            Ê÷½Úµã
+	 *            æ ‘èŠ‚ç‚¹
 	 * @param code
-	 *            ½Úµã±àÂë
+	 *            èŠ‚ç‚¹ç¼–ç 
 	 * @param result
-	 *            Result½á¹û¶ÔÏó
+	 *            Resultç»“æœå¯¹è±¡
 	 */
 	public void lookTreeNode(TreeNode node, String code, Map<Object,Object> result) {
 
@@ -277,18 +277,18 @@ public class TreeNode implements Comparable<TreeNode> {
 	}
 	
 	/**
-	 * ½«½Úµã×ª³É´øÓĞ¸´Ñ¡¹¦ÄÜµÄ½Úµã
+	 * å°†èŠ‚ç‚¹è½¬æˆå¸¦æœ‰å¤é€‰åŠŸèƒ½çš„èŠ‚ç‚¹
 	 * 
-	 * @return JSONArray jsonÊı×é
+	 * @return JSONArray jsonæ•°ç»„
 	 */
 	public JSONArray toJsonArrayOfChecked() {
 		return JSONUtil.toJSONArray(this);
 	}
 
 	/**
-	 * ½«½Úµã×ª³ÉÃ»ÓĞ¸´Ñ¡¹¦ÄÜµÄ½Úµã
+	 * å°†èŠ‚ç‚¹è½¬æˆæ²¡æœ‰å¤é€‰åŠŸèƒ½çš„èŠ‚ç‚¹
 	 * 
-	 * @return JSONArray jsonÊı×é
+	 * @return JSONArray jsonæ•°ç»„
 	 */
 	public JSONArray toJsonArrayOfNoChecked() {
 		return JSONUtil.toJSONArrayExcludes(this, new String[] { "checked" });
@@ -305,19 +305,19 @@ public class TreeNode implements Comparable<TreeNode> {
 		Object thisSortValue = this.getSortValue();
 		Object otherSortValue = tempTreeNode.getSortValue();
 
-		// Èç¹ûÃ»ÓĞÉèÖÃÔòÈÎÒâÅÅĞò
+		// å¦‚æœæ²¡æœ‰è®¾ç½®åˆ™ä»»æ„æ’åº
 		if (thisSortValue == null || otherSortValue == null)
 			return -1;
 
 		int compareValue = -1;
 
-		// Èç¹ûÅÅĞò²ßÂÔÊÇ×Ö·û´®
+		// å¦‚æœæ’åºç­–ç•¥æ˜¯å­—ç¬¦ä¸²
 		if (thisSortValue instanceof String) {
 			compareValue = ((String) this.getSortValue())
 					.compareTo((String) tempTreeNode.getSortValue());
 		}
 
-		// Èç¹ûÅÅĞò²ßÂÔÊÇÕûĞÍ
+		// å¦‚æœæ’åºç­–ç•¥æ˜¯æ•´å‹
 		if (thisSortValue instanceof Integer) {
 			compareValue = ((Integer) this.getSortValue())
 					.compareTo((Integer) tempTreeNode.getSortValue());

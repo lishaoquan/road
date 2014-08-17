@@ -8,31 +8,31 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * ²Ëµ¥Ä£ĞÍ
+ * èœå•æ¨¡å‹
  * @author Administrator
  *
  */
 @SuppressWarnings({ "serial", "rawtypes" })
 public class Menu implements Serializable, Comparable{
-	//Ö÷¼ü
+	//ä¸»é”®
     private String menuId;
     
-    //²Ëµ¥Ãû³Æ
+    //èœå•åç§°
     private String menuName;
     
-    //ÅÅĞò
+    //æ’åº
     private int sort;
     
-    //¸¸½ÚµãID
+    //çˆ¶èŠ‚ç‚¹ID
     private String parentId;
     
-    //¸¸²Ëµ¥¶ÔÏó
+    //çˆ¶èœå•å¯¹è±¡
     private Menu parentMenu;
     
-    //ËùÓĞµÄ×Ó²Ëµ¥ÁĞ±í
+    //æ‰€æœ‰çš„å­èœå•åˆ—è¡¨
     private Set<Menu> childrenMenu;
     
-    //²Ëµ¥Á´½Ó
+    //èœå•é“¾æ¥
     private String url;
     
 	public String getMenuId() {
@@ -103,7 +103,7 @@ public class Menu implements Serializable, Comparable{
 	
 	public int compareTo(Object o) {
 		if (!(o instanceof Menu)) {
-			throw new RuntimeException("ÔÚ Menu ÀàÖĞµÄcompareTo·½·¨²ÎÊıµÄÀàĞÍ²»Æ¥Åä");
+			throw new RuntimeException("åœ¨ Menu ç±»ä¸­çš„compareToæ–¹æ³•å‚æ•°çš„ç±»å‹ä¸åŒ¹é…");
 		}
 
 		Menu temp = (Menu) o;
@@ -112,9 +112,9 @@ public class Menu implements Serializable, Comparable{
 	}
 	
 	/**
-	 * ¿½±´¸Ã¶ÔÏó
+	 * æ‹·è´è¯¥å¯¹è±¡
 	 * 
-	 * @return ·µ»Ø¸Ã¶ÔÏóµÄ¿½±´
+	 * @return è¿”å›è¯¥å¯¹è±¡çš„æ‹·è´
 	 */
 	public Menu cloneMenu() {
 		Menu menu = new Menu();

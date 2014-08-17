@@ -8,33 +8,33 @@ import net.sf.json.JsonConfig;
 import net.sf.json.processors.JsonValueProcessor;
 
 /**
- * ÓÃÓÚ´¦ÀíÊ±¼äÀàĞÍ(java.util.Date)µÄJsonValueProcessor¸¨ÖúÀà
+ * ç”¨äºå¤„ç†æ—¶é—´ç±»å‹(java.util.Date)çš„JsonValueProcessorè¾…åŠ©ç±»
  * 
  */
 public class DateJsonValueProcessor implements JsonValueProcessor {
 
 	/**
-	 * Ä¬ÈÏÊ±¼ä¸ñÊ½£¬ÄêÔÂÈÕÊ±·ÖÃë
+	 * é»˜è®¤æ—¶é—´æ ¼å¼ï¼Œå¹´æœˆæ—¥æ—¶åˆ†ç§’
 	 */
 	public String DEFAULT_DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
 	/**
-	 * ÈÕÆÚ¸ñÊ½Àà
+	 * æ—¥æœŸæ ¼å¼ç±»
 	 */
 	private DateFormat dateFormat;
 
 	/**
-	 * ´´½¨DateJsonValueProcessor£¬²¢Ê¹ÓÃÄ¬ÈÏÊ±¼ä¸ñÊ½³õÊ¼»¯ÈÕÆÚ¸ñÊ½Àà
+	 * åˆ›å»ºDateJsonValueProcessorï¼Œå¹¶ä½¿ç”¨é»˜è®¤æ—¶é—´æ ¼å¼åˆå§‹åŒ–æ—¥æœŸæ ¼å¼ç±»
 	 */
 	public DateJsonValueProcessor() {
 		dateFormat = new SimpleDateFormat(DEFAULT_DATE_PATTERN);
 	}
 
 	/**
-	 * ´´½¨DateJsonValueProcessor£¬²¢Ê¹ÓÃÖ¸¶¨µÄ²ÎÊı³õÊ¼»¯ÈÕÆÚ¸ñÊ½Àà
+	 * åˆ›å»ºDateJsonValueProcessorï¼Œå¹¶ä½¿ç”¨æŒ‡å®šçš„å‚æ•°åˆå§‹åŒ–æ—¥æœŸæ ¼å¼ç±»
 	 * 
 	 * @param pattern
-	 *            Ê±¼ä¸ñÊ½
+	 *            æ—¶é—´æ ¼å¼
 	 */
 	public DateJsonValueProcessor(String pattern) {
 		try {
@@ -45,10 +45,10 @@ public class DateJsonValueProcessor implements JsonValueProcessor {
 	}
 
 	/**
-	 * ÖØĞ´processArrayValue
+	 * é‡å†™processArrayValue
 	 * 
 	 * @param arg0
-	 *            ×Ö·ûĞÍ²ÎÊı
+	 *            å­—ç¬¦å‹å‚æ•°
 	 * @param arg1
 	 *            Object
 	 * @return Object
@@ -58,10 +58,10 @@ public class DateJsonValueProcessor implements JsonValueProcessor {
 	}
 
 	/**
-	 * ÖØĞ´processObjectValue
+	 * é‡å†™processObjectValue
 	 * 
 	 * @param arg0
-	 *            ×Ö·ûĞÍ²ÎÊı
+	 *            å­—ç¬¦å‹å‚æ•°
 	 * @param arg1
 	 *            Object
 	 * @param arg2
@@ -74,11 +74,11 @@ public class DateJsonValueProcessor implements JsonValueProcessor {
 	}
 
 	/**
-	 * ¸ñÊ½»¯Ê±¼ä
+	 * æ ¼å¼åŒ–æ—¶é—´
 	 * 
 	 * @param value
-	 *            Ê±¼äÖµ
-	 * @return ¸ñÊ½»¯½á¹û£¬Èç¹ûvalueÎª¿ÕÖ±½Ó·µ»Ønull
+	 *            æ—¶é—´å€¼
+	 * @return æ ¼å¼åŒ–ç»“æœï¼Œå¦‚æœvalueä¸ºç©ºç›´æ¥è¿”å›null
 	 */
 	private Object process(Object value) {
 		if (value != null)

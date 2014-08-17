@@ -6,20 +6,20 @@ package com.contact.user.model;
 import java.io.Serializable;
 
 /**
- * ÓÃ»§¶ÔÓ¦½ÇÉ«µÄ¶ÔÓ¦Ä£ÐÍ
+ * ç”¨æˆ·å¯¹åº”è§’è‰²çš„å¯¹åº”æ¨¡åž‹
  * @author Administrator
  *
  */
 @SuppressWarnings("serial")
 public class RoleUser implements Serializable{
 
-	//Ö÷¼ü
+	//ä¸»é”®
 	private String id;
 	
-	//½ÇÉ«Ö÷¼ü
+	//è§’è‰²ä¸»é”®
 	private String roleId;
 	
-	//ÓÃ»§Ö÷¼ü
+	//ç”¨æˆ·ä¸»é”®
 	private String userId;
 
 	public String getId() {

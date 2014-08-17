@@ -9,29 +9,29 @@ import java.util.List;
 import com.contact.role.model.Role;
 
 /**
- * ÓÃ»§Ä£ĞÍ
+ * ç”¨æˆ·æ¨¡å‹
  * @author Administrator
  *
  */
 @SuppressWarnings("serial")
 public class User implements Serializable{
 	
-	//Ö÷¼ü
+	//ä¸»é”®
     private String id;
     
-    //ÓÃ»§ĞÕÃû
+    //ç”¨æˆ·å§“å
     private String userName;
     
-    //µÇÂ¼Ãû
+    //ç™»å½•å
     private String userId;
     
-    //ÃÜÂë
+    //å¯†ç 
     private String password;
     
-    //EmailµØÖ·
+    //Emailåœ°å€
     private String email;
     
-    //ÓÃ»§½ÇÉ«¼¯ºÏ
+    //ç”¨æˆ·è§’è‰²é›†åˆ
     private List<Role> role;
 
 	public String getId() {

@@ -4,20 +4,20 @@
 package com.contact.menu.model;
 
 /**
- * 角色菜单对应模型
+ * 瑙掕壊鑿滃崟瀵瑰簲妯″瀷
  * @author Administrator
  *
  */
 @SuppressWarnings("serial")
 public class RoleMenu implements java.io.Serializable{
 
-	//主键
+	//涓婚敭
 	private String id;
 	
-	//角色主键
+	//瑙掕壊涓婚敭
 	private String roleId;
 	
-	//菜单主键
+	//鑿滃崟涓婚敭
 	private String menuId;
 
 	public String getId() {

@@ -11,22 +11,22 @@ import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 
 /**
- * µÇÂ¼²Ù×÷µÄ¿ØÖÆÆ÷
+ * ç™»å½•æ“ä½œçš„æ§åˆ¶å™¨
  * @author Administrator
  *
  */
 public class LoginController extends Controller{
 	
 	/**
-	 * µÇÂ¼´¦Àí²Ù×÷
+	 * ç™»å½•å¤„ç†æ“ä½œ
 	 */
 	@ActionKey("/home/login")
 	public void login() {
-		//Ä£ÄâÓÃ»§µÇÂ¼
+		//æ¨¡æ‹Ÿç”¨æˆ·ç™»å½•
 		String role = getPara("role");
 		String username = getPara("username");
 		String password = getPara("password");
-		//ÔÚµÇÂ¼Ò³Ãæ²Ù×÷Ö®Ç°½«sessionĞÅÏ¢Çå¿Õ
+		//åœ¨ç™»å½•é¡µé¢æ“ä½œä¹‹å‰å°†sessionä¿¡æ¯æ¸…ç©º
 		removeSessionAttr("fromLogin");
 		removeSessionAttr("userInfo");
 		if (!username.equals("admin") && !password.equals("admin")){
@@ -34,25 +34,25 @@ public class LoginController extends Controller{
 			redirect("/login.jsp");
 			return;
 		}
-		//Èç¹ûÓÃ»§Í¨¹ıÑéÖ¤£¬Ôò½«ÓÃ»§ĞÅÏ¢ÉèÖÃµ½sessionÖĞ
+		//å¦‚æœç”¨æˆ·é€šè¿‡éªŒè¯ï¼Œåˆ™å°†ç”¨æˆ·ä¿¡æ¯è®¾ç½®åˆ°sessionä¸­
 		setSessionAttr("userInfo", "admin");
-		//ÕâÀïÄ£ÄâÊı¾İ¿âÖĞ»ñÈ¡²Ëµ¥ĞÅÏ¢²¢½øĞĞ×é×°
+		//è¿™é‡Œæ¨¡æ‹Ÿæ•°æ®åº“ä¸­è·å–èœå•ä¿¡æ¯å¹¶è¿›è¡Œç»„è£…
 		List<Menu> mList = new ArrayList<Menu>();
 		Menu p1 = new Menu();
 		p1.setMenuId("001");
-		p1.setMenuName("ÏúÊÛ¹ÜÀí");
+		p1.setMenuName("é”€å”®ç®¡ç†");
 		p1.setParentId("-1");
 		p1.setSort(1);
 		Menu c10 = new Menu();
 		c10.setMenuId("0010");
-		c10.setMenuName("´ÓÁĞ±íÉú³ÉºÏÍ¬");
+		c10.setMenuName("ä»åˆ—è¡¨ç”ŸæˆåˆåŒ");
 		c10.setParentId("001");
 		c10.setSort(10);
 		c10.setUrl("http://www.baidu.com");
 		p1.addChildMenu(c10);
 		Menu c11 = new Menu();
 		c11.setMenuId("0011");
-		c11.setMenuName("´Ó±àÂëÉú³ÉºÏÍ¬");
+		c11.setMenuName("ä»ç¼–ç ç”ŸæˆåˆåŒ");
 		c11.setParentId("001");
 		c11.setSort(11);
 		c11.setUrl("/pages/code.jsp");
@@ -60,12 +60,12 @@ public class LoginController extends Controller{
 		
 		Menu p2 = new Menu();
 		p2.setMenuId("002");
-		p2.setMenuName("Éú²ú¹ÜÀí");
+		p2.setMenuName("ç”Ÿäº§ç®¡ç†");
 		p2.setParentId("-1");
 		p2.setSort(2);
 		Menu c20 = new Menu();
 		c20.setMenuId("0020");
-		c20.setMenuName("ĞÂ¶©µ¥Éú²ú°²ÅÅ");
+		c20.setMenuName("æ–°è®¢å•ç”Ÿäº§å®‰æ’");
 		c20.setParentId("002");
 		c20.setSort(20);
 		c20.setUrl("/pages/neworder.jsp");
@@ -73,12 +73,12 @@ public class LoginController extends Controller{
 		
 		Menu p3 = new Menu();
 		p3.setMenuId("003");
-		p3.setMenuName("ºÏÍ¬¹ÜÀí");
+		p3.setMenuName("åˆåŒç®¡ç†");
 		p3.setParentId("-1");
 		p3.setSort(3);
 		Menu c30 = new Menu();
 		c30.setMenuId("0030");
-		c30.setMenuName("ºÏÍ¬¹ÜÀí");
+		c30.setMenuName("åˆåŒç®¡ç†");
 		c30.setParentId("003");
 		c30.setSort(30);
 		c30.setUrl("/pages/contact.jsp");
@@ -86,12 +86,12 @@ public class LoginController extends Controller{
 		
 		Menu p4 = new Menu();
 		p4.setMenuId("004");
-		p4.setMenuName("²úÆ·ÀàĞÍ¹ÜÀí");
+		p4.setMenuName("äº§å“ç±»å‹ç®¡ç†");
 		p4.setParentId("-1");
 		p4.setSort(4);
 		Menu c40 = new Menu();
 		c40.setMenuId("0040");
-		c40.setMenuName("²úÆ·ÀàĞÍ¹ÜÀí");
+		c40.setMenuName("äº§å“ç±»å‹ç®¡ç†");
 		c40.setParentId("004");
 		c40.setSort(30);
 		c40.setUrl("http://www.youdao.com");
