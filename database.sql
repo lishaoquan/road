@@ -39,3 +39,12 @@ CREATE TABLE `contact`.`rolemenu` (
   `menuid` VARCHAR(32) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
+
+--角色表
+CREATE TABLE `contact`.`role` (
+  `id` VARCHAR(32) NOT NULL,
+  `roleName` VARCHAR(45) NULL,
+  `sort` INT NULL,
+  `desc` VARCHAR(255) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
