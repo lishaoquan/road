@@ -38,7 +38,7 @@ public class UserDao {
 	
 	/**
 	 * 根据用户登录名获取用户信息
-	 * @param id
+	 * @param userId
 	 * @return user
 	 */
 	public static User findUserByUserId(String userId){
