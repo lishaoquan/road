@@ -24,10 +24,8 @@
 <link rel="stylesheet"
 	href="<%=context%>/js/jquery/themes/default/easyui.css"
 	type="text/css" media="screen" />
-<link rel="stylesheet" href="<%=context%>/js/jquery/themes/icon.css"
-	type="text/css" media="screen" />
-<link rel="stylesheet" href="<%=context%>/css/style.css"
-	type="text/css" />
+<link rel="stylesheet" href="<%=context%>/js/jquery/themes/icon.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<%=context%>/css/style.css" type="text/css" />
 <script src="<%=context%>/js/jquery/jquery.min.js"></script>
 <script src="<%=context%>/js/jquery/jquery.easyui.min.js"></script>
 <script src="<%=context%>/js/jquery/locale/easyui-lang-zh_CN.js"></script>
