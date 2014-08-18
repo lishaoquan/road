@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.contact.menu.model.Menu;
+import com.contact.user.db.UserDao;
+import com.contact.user.model.User;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 
@@ -29,13 +31,14 @@ public class LoginController extends Controller{
 		//在登录页面操作之前将session信息清空
 		removeSessionAttr("fromLogin");
 		removeSessionAttr("userInfo");
-		if (!username.equals("admin") && !password.equals("admin")){
+		User user = UserDao.findUserByUserId(username);
+		if (null == user || !password.equals(user.getPassword())){
 			setSessionAttr("fromLogin",true);
 			redirect("/login.jsp");
 			return;
 		}
 		//如果用户通过验证，则将用户信息设置到session中
-		setSessionAttr("userInfo", "admin");
+		setSessionAttr("userInfo",user);
 		//这里模拟数据库中获取菜单信息并进行组装
 		List<Menu> mList = new ArrayList<Menu>();
 		Menu p1 = new Menu();
