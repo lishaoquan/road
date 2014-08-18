@@ -23,3 +23,19 @@ CREATE TABLE `contact`.`user` (
   `password` VARCHAR(255) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
+
+--角色用户表
+CREATE TABLE `contact`.`roleuser` (
+  `id` VARCHAR(32) NOT NULL,
+  `roleId` VARCHAR(32) NULL,
+  `userId` VARCHAR(32) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+--角色用户表
+CREATE TABLE `contact`.`rolemenu` (
+  `id` VARCHAR(32) NOT NULL,
+  `roleId` VARCHAR(32) NULL,
+  `menuid` VARCHAR(32) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
