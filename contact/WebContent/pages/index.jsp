@@ -30,6 +30,7 @@
 	<script type="text/javascript" src='<%=context %>/js/common/outlook.js'> </script>
 
     <script type="text/javascript">
+    var basePath = '<%=context %>';
 	 var _menus = {"menus":[
 						{"menuid":"1","icon":"icon-sys","menuname":"系统管理",
 							"menus":[{"menuname":"菜单管理","icon":"icon-nav","url":"http://www.16sucai.com"},

@@ -41,6 +41,20 @@ public class LoginController extends Controller{
 		setSessionAttr("userInfo",user);
 		//这里模拟数据库中获取菜单信息并进行组装
 		List<Menu> mList = new ArrayList<Menu>();
+		Menu p0 = new Menu();
+		p0.setMenuId("000");
+		p0.setMenuName("系统管理");
+		p0.setParentId("-1");
+		p0.setSort(0);
+		Menu c00 = new Menu();
+		c00.setMenuId("0000");
+		c00.setMenuName("菜单管理");
+		c00.setParentId("000");
+		c00.setSort(0);
+		c00.setUrl("/pages/menu.jsp");
+		p0.addChildMenu(c00);
+		
+		
 		Menu p1 = new Menu();
 		p1.setMenuId("001");
 		p1.setMenuName("销售管理");
@@ -100,6 +114,7 @@ public class LoginController extends Controller{
 		c40.setUrl("http://www.youdao.com");
 		p4.addChildMenu(c40);
 		
+		mList.add(p0);
 		mList.add(p1);
 		mList.add(p2);
 		mList.add(p3);
