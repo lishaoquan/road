@@ -20,7 +20,7 @@ function InitLeftMenu() {
 //	$("#leftMenu").append(menulist);
 	$('.easyui-panel li a').click(function(){
 		var tabTitle = $(this).text();
-		var url = $(this).attr("href");
+		var url = $(this).attr("link");
 		if (url){
 			if (url.indexOf('http://') == -1){
 				url = contextPath + url;

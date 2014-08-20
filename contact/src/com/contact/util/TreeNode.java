@@ -37,7 +37,7 @@ public class TreeNode implements Comparable<TreeNode> {
 	/**
 	 * 节点的其他属性
 	 */
-	private Map<String, Object> otherProperty = new HashMap<String, Object>();
+	private Map<String, Object> attributes = new HashMap<String, Object>();
 
 	/**
 	 * 节点的子节点列表
@@ -108,14 +108,6 @@ public class TreeNode implements Comparable<TreeNode> {
 		this.leaf = leaf;
 	}
 
-	public Map<String, Object> getOtherProperty() {
-		return otherProperty;
-	}
-
-	public void setOtherProperty(Map<String, Object> otherProperty) {
-		this.otherProperty = otherProperty;
-	}
-
 	public Set<TreeNode> getChildren() {
 		return children;
 	}
@@ -164,6 +156,14 @@ public class TreeNode implements Comparable<TreeNode> {
 		this.sortStrategy = sortStrategy;
 	}
 
+	public Map<String, Object> getAttributes() {
+		return attributes;
+	}
+
+	public void setAttributes(Map<String, Object> attributes) {
+		this.attributes = attributes;
+	}
+
 	/**
 	 * 加入子节点
 	 * 
@@ -184,7 +184,7 @@ public class TreeNode implements Comparable<TreeNode> {
 	 *            属性的值
 	 */
 	public void addProperty(String name, Object value) {
-		this.otherProperty.put(name, value);
+		this.attributes.put(name, value);
 	}
 
 	/**
@@ -195,7 +195,7 @@ public class TreeNode implements Comparable<TreeNode> {
 	 * @return 属性值
 	 */
 	public Object getProperty(String name) {
-		return this.otherProperty.get(name);
+		return this.attributes.get(name);
 	}
 	
 	/**
