@@ -51,7 +51,7 @@ public class LoginController extends Controller{
 		c00.setMenuName("菜单管理");
 		c00.setParentId("000");
 		c00.setSort(0);
-		c00.setUrl("/pages/menu.jsp");
+		c00.setUrl("/pages/menu/menu.jsp");
 		p0.addChildMenu(c00);
 		
 		

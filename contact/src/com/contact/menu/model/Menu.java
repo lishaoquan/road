@@ -4,8 +4,12 @@
 package com.contact.menu.model;
 
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+
+import com.contact.util.TreeNode;
 
 /**
  * 菜单模型
@@ -124,5 +128,70 @@ public class Menu implements Serializable, Comparable{
 		menu.setSort(sort);
 		menu.setUrl(url);
 		return menu;
+	}
+	
+	/**
+	 * 组装菜单
+	 * @param menu
+	 * @param menuList
+	 */
+	public static void assembleMenu(Menu menu,List<Menu> menuList){
+		if(null == menu)
+		{
+			Iterator<Menu> it = menuList.iterator();
+			while (it.hasNext())
+			{
+				Menu m = (Menu)it.next();
+				if (m.getParentId().equals("-1"))//根节点
+				{
+					menu =  m;
+				}
+			}
+		}
+		// 循环所有的节点找到子节点
+		for (Iterator<Menu> it = menuList.iterator(); it.hasNext();)
+		{
+			Menu tempMenu =  it.next();
+			if (tempMenu.getParentId().equals(menu.getMenuId())) 
+			{
+				menu.addChildMenu(tempMenu);
+				tempMenu.setParentMenu(menu);
+				assembleMenu(tempMenu, menuList);
+			}
+		}
+	}
+	
+	/**
+	 * 组装菜单节点
+	 * @param menu
+	 * @return
+	 */
+	public static TreeNode assembleMenuNode(Menu menu)
+	{
+		TreeNode menuNode = new TreeNode(menu.getMenuId(),menu.getMenuName());
+		menuNode.setSortValueInteger(menu.getSort());
+		menuNode.addProperty("parentid", menu.getParentId());
+		menuNode.addProperty("url", menu.getUrl());
+		return menuNode;
+	}
+	
+	/**
+	 * 组装菜单树形节点
+	 * @param menu
+	 * @param treeNode
+	 */
+	public static void assembleMenuTreeNode(Menu menu,TreeNode treeNode)
+	{
+		if (null == menu.getChildrenMenu())
+		{
+			return;
+		}
+		for (Iterator<Menu> it = menu.getChildrenMenu().iterator(); it.hasNext();) 
+		{
+			Menu m = (Menu) it.next();
+			TreeNode menuNode = assembleMenuNode(m);
+			treeNode.addChild(menuNode);
+			assembleMenuTreeNode(m, menuNode);
+		}
 	}
 }

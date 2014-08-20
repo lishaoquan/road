@@ -23,6 +23,11 @@ public class TreeNode implements Comparable<TreeNode> {
 	 * 节点的id
 	 */
 	private String id;
+	
+	/**
+	 * 节点状态
+	 */
+	private String state;
 
 	/**
 	 * 该节点是否是叶子
@@ -74,107 +79,86 @@ public class TreeNode implements Comparable<TreeNode> {
 	 */
 	private String sortStrategy = SORT_STARATEGY_ASC;
 	
+	public TreeNode(String id, String text) {
+		this.id = id;
+		this.text = text;
+	}
+	
 	public String getText() {
 		return text;
 	}
-
-
 
 	public void setText(String text) {
 		this.text = text;
 	}
 
-
-
 	public String getId() {
 		return id;
 	}
-
-
 
 	public void setId(String id) {
 		this.id = id;
 	}
 
-
-
 	public Boolean getLeaf() {
 		return leaf;
 	}
-
-
 
 	public void setLeaf(Boolean leaf) {
 		this.leaf = leaf;
 	}
 
-
-
 	public Map<String, Object> getOtherProperty() {
 		return otherProperty;
 	}
-
-
 
 	public void setOtherProperty(Map<String, Object> otherProperty) {
 		this.otherProperty = otherProperty;
 	}
 
-
-
 	public Set<TreeNode> getChildren() {
 		return children;
 	}
-
-
 
 	public void setChildren(Set<TreeNode> children) {
 		this.children = children;
 	}
 
-
-
 	public Boolean getChecked() {
 		return checked;
 	}
-
-
 
 	public void setChecked(Boolean checked) {
 		this.checked = checked;
 	}
 
+	public String getState() {
+		return state;
+	}
 
+	public void setState(String state) {
+		this.state = state;
+	}
 
 	public Object getSortValue() {
 		return sortValue;
 	}
 
-
-
 	public void setSortValue(Object sortValue) {
 		this.sortValue = sortValue;
 	}
-
-
 
 	public String getIcon() {
 		return icon;
 	}
 
-
-
 	public void setIcon(String icon) {
 		this.icon = icon;
 	}
 
-
-
 	public String getSortStrategy() {
 		return sortStrategy;
 	}
-
-
 
 	public void setSortStrategy(String sortStrategy) {
 		this.sortStrategy = sortStrategy;
