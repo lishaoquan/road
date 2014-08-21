@@ -156,7 +156,7 @@
 	     <div class="easyui-panel" title="${menu.menuName}" collapsible="true" style="width:180px;height:auto;padding:0;">
 		    <ul>
 		    <c:forEach items="${menu.childrenMenu}" var="secondMenu">
-										<a target="mainFrame" href="${secondMenu.url}">${secondMenu.menuName}</a>
+				<li><div><a target="mainFrame" link="${secondMenu.url}">${secondMenu.menuName}</a></div></li>
 			</c:forEach>
 			</ul>
 		</div>
@@ -165,7 +165,7 @@
 	     <div class="easyui-panel" title="${menu.menuName}" collapsible="true" collapsed="true" style="width:180px;height:auto;padding:0;">
 		    <ul>
 		    <c:forEach items="${menu.childrenMenu}" var="secondMenu">
-										<a target="mainFrame" href="${secondMenu.url}">${secondMenu.menuName}</a>
+				<li><div><a target="mainFrame" link="${secondMenu.url}">${secondMenu.menuName}</a></div></li>
 			</c:forEach>
 			</ul>
 		</div>
