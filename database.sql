@@ -49,9 +49,39 @@ CREATE TABLE `contact`.`role` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+--产品分类表
+CREATE TABLE `contact`.`productcategory`(
+    `id` VARCHAR(32) NOT NULL,
+    `name`	VARCHAR(50) NULL,
+	`description` VARCHAR(255) NULL,
+	`imageurl` VARCHAR(255) NULL,
+	`parentId` VARCHAR(32) NULL
 
+)
 
-
+--产品表
+CREATE TABLE `contact`.`product`(
+    `id` VARCHAR(32) NOT NULL,
+	`parentid` VARCHAR(32) NULL,
+	`productcategory` VARCHAR(32) NULL,
+    `sn` VARCHAR(100) NULL,
+	`part` VARCHAR(100) NULL,
+	`image` VARCHAR(255) NULL,
+	`code` VARCHAR(255) NULL,
+	`item` VARCHAR(255) NULL,
+	`name` VARCHAR(255) NULL,
+	`dimensions` VARCHAR(255) NULL,
+	`descriptionen` VARCHAR(255) NULL,
+	`descriptioncn` VARCHAR(255) NULL,
+	`color` VARCHAR(50) NULL,
+	`qty` VARCHAR(200) NULL,
+	`amount` VARCHAR(200) NULL,
+	`cbm1` VARCHAR(20) NULL,
+	`cbm2` VARCHAR(20) NULL,
+	`gw1` VARCHAR(20) NULL,
+	`gw2` VARCHAR(20) NULL,
+	`workshop` VARCHAR(20) NULL
+)
 
 ----初始化数据库表数据
 /*
