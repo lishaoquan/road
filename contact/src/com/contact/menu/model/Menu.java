@@ -4,6 +4,7 @@
 package com.contact.menu.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -193,5 +194,39 @@ public class Menu implements Serializable, Comparable{
 			treeNode.addChild(menuNode);
 			assembleMenuTreeNode(m, menuNode);
 		}
+	}
+	
+	public static List<Menu> assembleSystemUserMenu(List<Menu> menuList){
+		List<Menu> mList = new ArrayList<Menu>();
+		if (null != menuList && !menuList.isEmpty()){
+			String rootId = "";
+			//现获取顶级菜单
+			for (Menu menu : menuList) {
+				if (menu.getParentId().equals("-1")){
+					rootId = menu.getMenuId();
+					break;
+				}
+			}
+			//获取所有的一级菜单
+			for (Menu menu : menuList) {
+				if (rootId.equals(menu.getParentId())){
+					Menu first = menu;
+					//二级菜单
+					for (Menu menu2 : menuList) {
+						if (first.getMenuId().equals(menu2.getParentId())){
+							Menu second = menu2;
+							//三级菜单
+							for (Menu menu3 : menuList) {
+								second.addChildMenu(menu3);
+							}
+							first.addChildMenu(second);//将二级菜单设置一级菜单中
+						}
+					}
+					mList.add(first);
+				}
+			}
+		}
+		
+		return mList;
 	}
 }
