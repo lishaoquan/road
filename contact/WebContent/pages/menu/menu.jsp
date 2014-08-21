@@ -54,6 +54,7 @@
 	<script type="text/javascript">
 	    //新增菜单
 		function append(){
+			$('#ff').form('clear');
 			$('#addMenuPanel').dialog({
 			    title: '新增菜单',
 			    width: 400,
@@ -115,18 +116,22 @@
 	    }
 	    
 		function removeit(){
-			var t = $('#tt');
-			var node = t.tree('getSelected');
-			$.ajax({
-				  type: "POST",
-				  url: "/contact/menu/remove",
-				  data: { menuId:node.id},
-				  dataType:'json',
-				  success:function(data, textStatus){
-				      var node = t.tree('reload');
-					  $.messager.alert('提示', "删除成功!", 'info');
-				  }
-				});
+			$.messager.confirm('确认', '确定要删除该菜单节点吗?', function(r){
+				if (r){
+					var t = $('#tt');
+					var node = t.tree('getSelected');
+					$.ajax({
+						  type: "POST",
+						  url: "/contact/menu/remove",
+						  data: { menuId:node.id},
+						  dataType:'json',
+						  success:function(data, textStatus){
+						      var node = t.tree('reload');
+							  $.messager.alert('提示', "删除成功!", 'info');
+						  }
+						});
+				}
+			});
 		}
 		
 		function collapse(){
