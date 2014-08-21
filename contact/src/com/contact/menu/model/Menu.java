@@ -4,8 +4,13 @@
 package com.contact.menu.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+
+import com.contact.util.TreeNode;
 
 /**
  * 菜单模型
@@ -124,5 +129,104 @@ public class Menu implements Serializable, Comparable{
 		menu.setSort(sort);
 		menu.setUrl(url);
 		return menu;
+	}
+	
+	/**
+	 * 组装菜单
+	 * @param menu
+	 * @param menuList
+	 */
+	public static void assembleMenu(Menu menu,List<Menu> menuList){
+		if(null == menu)
+		{
+			Iterator<Menu> it = menuList.iterator();
+			while (it.hasNext())
+			{
+				Menu m = (Menu)it.next();
+				if (m.getParentId().equals("-1"))//根节点
+				{
+					menu =  m;
+				}
+			}
+		}
+		// 循环所有的节点找到子节点
+		for (Iterator<Menu> it = menuList.iterator(); it.hasNext();)
+		{
+			Menu tempMenu =  it.next();
+			if (tempMenu.getParentId().equals(menu.getMenuId())) 
+			{
+				menu.addChildMenu(tempMenu);
+				tempMenu.setParentMenu(menu);
+				assembleMenu(tempMenu, menuList);
+			}
+		}
+	}
+	
+	/**
+	 * 组装菜单节点
+	 * @param menu
+	 * @return
+	 */
+	public static TreeNode assembleMenuNode(Menu menu)
+	{
+		TreeNode menuNode = new TreeNode(menu.getMenuId(),menu.getMenuName());
+		menuNode.setSortValueInteger(menu.getSort());
+		menuNode.addProperty("parentid", menu.getParentId());
+		menuNode.addProperty("url", menu.getUrl());
+		return menuNode;
+	}
+	
+	/**
+	 * 组装菜单树形节点
+	 * @param menu
+	 * @param treeNode
+	 */
+	public static void assembleMenuTreeNode(Menu menu,TreeNode treeNode)
+	{
+		if (null == menu.getChildrenMenu())
+		{
+			return;
+		}
+		for (Iterator<Menu> it = menu.getChildrenMenu().iterator(); it.hasNext();) 
+		{
+			Menu m = (Menu) it.next();
+			TreeNode menuNode = assembleMenuNode(m);
+			treeNode.addChild(menuNode);
+			assembleMenuTreeNode(m, menuNode);
+		}
+	}
+	
+	public static List<Menu> assembleSystemUserMenu(List<Menu> menuList){
+		List<Menu> mList = new ArrayList<Menu>();
+		if (null != menuList && !menuList.isEmpty()){
+			String rootId = "";
+			//现获取顶级菜单
+			for (Menu menu : menuList) {
+				if (menu.getParentId().equals("-1")){
+					rootId = menu.getMenuId();
+					break;
+				}
+			}
+			//获取所有的一级菜单
+			for (Menu menu : menuList) {
+				if (rootId.equals(menu.getParentId())){
+					Menu first = menu;
+					//二级菜单
+					for (Menu menu2 : menuList) {
+						if (first.getMenuId().equals(menu2.getParentId())){
+							Menu second = menu2;
+							//三级菜单
+							for (Menu menu3 : menuList) {
+								second.addChildMenu(menu3);
+							}
+							first.addChildMenu(second);//将二级菜单设置一级菜单中
+						}
+					}
+					mList.add(first);
+				}
+			}
+		}
+		
+		return mList;
 	}
 }
