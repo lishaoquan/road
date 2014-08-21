@@ -54,14 +54,60 @@
 	<script type="text/javascript">
 	    //新增菜单
 		function append(){
-	    	$('#addMenuPanel').panel("open");
+			$('#addMenuPanel').dialog({
+			    title: '新增菜单',
+			    width: 400,
+			    height: 200,
+			    closed: false,
+			    cache: false,
+			    modal: true
+			});
+			$('#updateMenuName').textbox({
+			    width:180,
+			    height:30
+			});
+			$('#updateUrl').textbox({
+			    width:180,
+			    height:30
+			});
+			$('#addBtn').linkbutton({
+			    iconCls: 'icon-save'
+			});
+			$('#addClear').linkbutton({
+			    iconCls: 'icon-clear'
+			});
+			$('#addMenuPanel').css('display','');
+	    	/* $('#addMenuPanel').panel("open"); */
  			var t = $('#tt');
 			var node = t.tree('getSelected');
 			$('#menuId').val(node.id);
 		}
 	    
 	    function modify(){
-	    	$('#updateMenuPanel').panel("open");
+			$('#updateMenuPanel').dialog({
+			    title: '修改菜单',
+			    width: 400,
+			    height: 200,
+			    closed: false,
+			    cache: false,
+			    modal: true
+			});
+			$('#addMenuName').textbox({
+			    width:180,
+			    height:30
+			});
+			$('#addUrl').textbox({
+			    width:180,
+			    height:30
+			});
+			$('#updateBtn').linkbutton({
+			    iconCls: 'icon-save'
+			});
+			$('#updateClear').linkbutton({
+			    iconCls: 'icon-clear'
+			});
+			$('#updateMenuPanel').css('display','');
+	    	/* $('#updateMenuPanel').panel("open"); */
  			var t = $('#tt');
 			var node = t.tree('getSelected');
 			$('#updateMenuId').val(node.id);
@@ -95,30 +141,30 @@
 	</script>
 	
 	<!-- 菜单新增panel -->
-		<div id="addMenuPanel"  class="easyui-panel" closed="true" title="新增菜单" style="width:400px">
+		<div id="addMenuPanel" style="width:400px;display: none;">
 		<div style="padding:10px 60px 20px 60px">
 	    <form id="ff" class="easyui-form" method="post" data-options="novalidate:true">
 	    	<input type="text" id="menuId" name="menuId" style='display: none;'>
 	    	<table cellpadding="5">
 	    		<tr>
 	    			<td>菜单名称:</td>
-	    			<td><input class="easyui-textbox" type="text" name="menuName" data-options="required:true"></input></td>
+	    			<td><input class="easyui-textbox" type="text" id="updateMenuName" name="menuName" data-options="required:true"></input></td>
 	    		</tr>
 	    		<tr>
 	    			<td>菜单链接:</td>
-	    			<td><input class="easyui-textbox" type="text" name="url"></input></td>
+	    			<td><input class="easyui-textbox" type="text" id="updateUrl" name="url"></input></td>
 	    		</tr>
 	    	</table>
 	    </form>
 	    <div style="text-align:center;padding:5px">
-	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>
-	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重置</a>
+	    	<a href="javascript:void(0)" id="addBtn" onclick="submitForm()">保存</a>
+	    	<a href="javascript:void(0)" id="addClear" onclick="clearForm()">重置</a>
 	    </div>
 	    </div>
 	</div>
 	
 		<!-- 菜单更新panel -->
-		<div id="updateMenuPanel"  class="easyui-panel" closed="true" title="更新菜单" style="width:400px">
+		<div id="updateMenuPanel" style="width:400px;display: none;">
 		<div style="padding:10px 60px 20px 60px">
 	    <form id="updateff" class="easyui-form" method="post" data-options="novalidate:true">
 	    	<input type="text" id="updateMenuId" name="menuId" style='display: none;'>
@@ -134,8 +180,8 @@
 	    	</table>
 	    </form>
 	    <div style="text-align:center;padding:5px">
-	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="updateForm()">提交</a>
-	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重置</a>
+	    	<a href="javascript:void(0)" id="updateBtn" onclick="updateForm()">保存</a>
+	    	<a href="javascript:void(0)" id="updateClear" onclick="clearForm1()">重置</a>
 	    </div>
 	    </div>
 	</div>
@@ -150,7 +196,8 @@
 				success:function(data){
 		 			var t = $('#tt');
 					var node = t.tree('reload');
-					$('#addMenuPanel').panel("close");
+					/* $('#addMenuPanel').panel("close"); */
+					$('#addMenuPanel').dialog('close');
 					$.messager.alert('提示', "新增成功!", 'info');
 				 }
 
@@ -166,7 +213,8 @@
 				success:function(data){
 		 			var t = $('#tt');
 					var node = t.tree('reload');
-					$('#updateMenuPanel').panel("close");
+					/* $('#updateMenuPanel').panel("close"); */
+					$('#updateMenuPanel').dialog('close');
 					$.messager.alert('提示', "更新成功!", 'info');
 				 }
 
@@ -175,6 +223,10 @@
 		
 		function clearForm(){
 			$('#ff').form('clear');
+		}
+		
+		function clearForm1(){
+			$('#updateff').form('clear');
 		}
 	</script>
 </body>
