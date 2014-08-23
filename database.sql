@@ -58,7 +58,6 @@ CREATE TABLE `contact`.`productcategory`(
 	`parentId` VARCHAR(32) NULL,
      PRIMARY KEY (`id`))
 	 ENGINE = InnoDB;
-)
 
 --产品表
 CREATE TABLE `contact`.`product`(
@@ -84,8 +83,49 @@ CREATE TABLE `contact`.`product`(
 	`workshop` VARCHAR(20) NULL,
      PRIMARY KEY (`id`))
 	 ENGINE = InnoDB;
-)
 
+--合同表
+CREATE TABLE `contact`.`contract`(
+    `id` VARCHAR(32) NOT NULL,
+    `name` VARCHAR(50) NULL,
+	`customername` VARCHAR(50) NULL,
+	`creatorid` VARCHAR(32) NULL,
+	`customercontry` VARCHAR(50) NULL,
+	`customeraddress` VARCHAR(255) NULL,
+	`tel` VARCHAR(50) NULL,
+	`mobile` VARCHAR(50) NULL,
+	`fox` VARCHAR(50) NULL,
+	`email` VARCHAR(50) NULL,
+	`date` VARCHAR(50) NULL,
+	`contractno` VARCHAR(50) NULL,
+	`customerno` VARCHAR(50) NULL,
+	`business` VARCHAR(50) NULL,
+	`status` VARCHAR(10) NULL,
+     PRIMARY KEY (`id`))
+	 ENGINE = InnoDB;
+	 
+--产品合同表
+CREATE TABLE `contact`.`productcontract`(
+     `id` VARCHAR(32) NOT NULL,
+	 `productid` VARCHAR(32) NULL,
+	 `contractid` VARCHAR(32) NULL,
+	 `color` VARCHAR(50) NULL,
+	 `qty` VARCHAR(50) NULL,
+      PRIMARY KEY (`id`))
+	 ENGINE = InnoDB;
+		 
+--方案表
+CREATE TABLE `contact`.`schemes`(
+     `id` VARCHAR(32) NOT NULL,
+	 `name` VARCHAR(50) NULL,
+	 `columnName` VARCHAR(32) NULL,
+	 `columnValue` VARCHAR(50) NULL,
+	 `contactId` VARCHAR(32) NULL,
+      PRIMARY KEY (`id`))
+	 ENGINE = InnoDB;
+		 
+		 
+		 
 ----初始化数据库表数据
 /*
 -- Query: SELECT * FROM contact.user
