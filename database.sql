@@ -55,8 +55,9 @@ CREATE TABLE `contact`.`productcategory`(
     `name`	VARCHAR(50) NULL,
 	`description` VARCHAR(255) NULL,
 	`imageurl` VARCHAR(255) NULL,
-	`parentId` VARCHAR(32) NULL
-
+	`parentId` VARCHAR(32) NULL,
+     PRIMARY KEY (`id`))
+	 ENGINE = InnoDB;
 )
 
 --产品表
@@ -80,7 +81,9 @@ CREATE TABLE `contact`.`product`(
 	`cbm2` VARCHAR(20) NULL,
 	`gw1` VARCHAR(20) NULL,
 	`gw2` VARCHAR(20) NULL,
-	`workshop` VARCHAR(20) NULL
+	`workshop` VARCHAR(20) NULL,
+     PRIMARY KEY (`id`))
+	 ENGINE = InnoDB;
 )
 
 ----初始化数据库表数据
