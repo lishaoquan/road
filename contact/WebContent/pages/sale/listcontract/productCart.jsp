@@ -43,6 +43,8 @@
 					<td><input class="easyui-textbox" type="text" name="email" data-options="required:true,validType:'email'"/></td>
 					<td>合同编号:</td>
 					<td><input class="easyui-textbox" type="text" name="email" data-options="required:true,validType:'email'"/></td>
+				    <td></td>
+				    <td></td>
 				</tr>
 				<tr>
 					<td>客户地址:</td>
@@ -53,6 +55,11 @@
 					<td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"/></td>
 					<td>手机:</td>
 					<td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"/></td>
+					<td></td>
+				    <td></td>
+				    <td rowspan="1" style="padding-left:100px;">
+            				<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">下一步</a>
+					</td>
 				</tr>
 				<tr>
 					<td>传真:</td>
@@ -61,11 +68,8 @@
 					<td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"/></td>
 					<td>业务编号:</td>
 					<td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"/></td>
-					<td colspan="3" align="right">
-						<div style="text-align:center;padding-left:150px">
-            				<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">下一步</a>
-       					</div>
-					</td>
+					<td></td>
+				    <td></td>
 				</tr>
 			</table>
 		</form>
