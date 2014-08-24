@@ -87,9 +87,9 @@
             	'->','->','->','->','->','->','->','->','->','->',
             	{
             		iconCls: 'icon-cart',
-            		text:'进入购物车',
+            		text:'下一步',
             		handler: function(){
-            			alert('进入购物车')
+            			   location.href = '/contact/pages/sale/listcontract/productCart.jsp';
             			}
             	}],
                 onExpandRow: function(index,row){
