@@ -37,9 +37,7 @@
         <div data-options="region:'center',title:'分类说明和产品列表',iconCls:'icon-ok'">
         <div title="About" data-options="href:'_content.html'" style="padding:10px">说明</div>
                 <div title="DataGrid" style="padding:5px">
-					<table id="dg" style="width:650px;height:250px"
-					            url="datagrid_data1.json" 
-					            title="DataGrid - SubGrid"
+					<table id="dg" url="datagrid_data1.json" title="产品列表"
 					            singleSelect="true" fitColumns="true">
 					        <thead>
 					            <tr>
@@ -53,6 +51,9 @@
 					            </tr>
 					        </thead>
 					    </table>
+					    <div id="pp" class="easyui-pagination" style="background:#efefef;border:1px solid #ccc;"
+                              data-options="total:2000,pageSize:10">
+                       </div>
                 </div>
         </div>
     </div>
