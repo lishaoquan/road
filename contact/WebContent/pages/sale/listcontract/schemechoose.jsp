@@ -27,7 +27,7 @@
 </head>
 <body>
 <div id="tt" style="margin:0;">
-	<a id="showContract" href="#" class="icon-save" onclick="javascript:alert('输出合同')">合同输出</a>
+	<a id="showContract" href="#" class="icon-save">合同输出</a>
 </div>
 <div id="p" class="easyui-panel" title="合同方案选择" 
         style="width:100%;height:630px;padding:0;background:#fafafa;">
@@ -314,7 +314,13 @@ $('#tabss').tabs({
     tabPosition:'left',
     toolPosition:'right',
     onSelect:function(title,index){
+    	
     }
+});
+$(function(){
+	$("#showContract").bind('click',function(){
+		location.href="/contact/pages/sale/listcontract/outputContract.jsp";
+	});
 });
 </script>
 </html>
