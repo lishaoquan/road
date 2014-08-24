@@ -27,7 +27,6 @@
 	 <script type="text/javascript" src="<%=context %>/pages/sale/listcontract/datagrid-detailview.js"></script>
 </head>
 <body>
-    <div style="margin:20px 0;"></div>
     <div class="easyui-layout" style="width:100%;height:600px;">
 <!--         <div data-options="region:'north'" style="height:50px"></div>
         <div data-options="region:'south',split:true" style="height:50px;"></div> -->
