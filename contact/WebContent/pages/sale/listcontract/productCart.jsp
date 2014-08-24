@@ -61,6 +61,11 @@
 					<td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"/></td>
 					<td>业务编号:</td>
 					<td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"/></td>
+					<td colspan="3" align="right">
+						<div style="text-align:center;padding-left:150px">
+            				<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">下一步</a>
+       					</div>
+					</td>
 				</tr>
 			</table>
 		</form>
