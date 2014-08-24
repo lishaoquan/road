@@ -36,8 +36,7 @@
         <div data-options="region:'center',title:'分类说明和产品列表',iconCls:'icon-ok'">
         <div id="p" class="easyui-panel" title="产品类型说明" 
 		        style="height:150px;padding:10px;background:#fafafa;"
-		        data-options="iconCls:'icon-tip',closable:true,
-		                collapsible:true,minimizable:true,maximizable:true">
+		        data-options="iconCls:'icon-tip',collapsible:true,">
 		    <p>此类型说明如下：XXXXXXX</p>
 			</div>
 			<div id="tb" style="padding:5px;height:auto">
@@ -74,8 +73,6 @@
             $('#dg').datagrid({
                 view: detailview,
                 singleSelect:false,
-                minimizable:true,
-                maximizable:true,
                 checkOnSelect:true,
                 autoRowHeight:true,
                 rownumbers:true,
