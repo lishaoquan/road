@@ -31,7 +31,7 @@
 	src="<%=context%>/pages/sale/listcontract/datagrid-detailview.js"></script>
 </head>
 <body>
-	<div class="easyui-panel" title="合同基本信息">
+	<div class="easyui-panel" title="合同基本信息"  data-options="collapsible:true">
 		<form id="ff" method="post">
 			<table cellpadding="2">
 				<tr>
@@ -68,7 +68,6 @@
 	<table style="padding-top: 5px;" id="dg" url="datagrid_data1.json" title="合同产品信息" singleSelect="false" fitColumns="true">
 		<thead>
 			<tr>
-				<th data-options="field:'ck',checkbox:true"></th>
 				<th field="itemid" width="80">Item ID</th>
 				<th field="productid" width="100">Product ID</th>
 				<th field="listprice" align="right" width="80">List Price</th>
@@ -86,7 +85,6 @@
 		$('#dg').datagrid({
 			view : detailview,
 			singleSelect : false,
-			checkOnSelect : true,
 			rownumbers : true,
 			detailFormatter : function(index, row) {
 				return '<div style="padding:2px"><table class="ddv"></table></div>';
@@ -102,7 +100,6 @@
 					loadMsg : '',
 					height : 'auto',
 					columns : [ [ 
-					   {field : 'ck',checkbox : true}, 
 					   {field : 'orderid',title : 'Order ID',width : 200},
 					   {field : 'quantity',title : 'Quantity',width : 100,align : 'right'}, 
 					   {field : 'unitprice',title : 'Unit Price',width : 100,align : 'right'} 
@@ -112,18 +109,6 @@
 						setTimeout(function() {
 							$('#dg').datagrid('fixDetailRowHeight',index);}, 0);
 					},
-					onSelect : function(rowIndex,rowData) {
-						alert('你选择了第' + rowIndex+ '行，数据为:' + rowData);
-					},
-					onUnselect : function(rowIndex,rowData) {
-						alert('你取消选择了第' + rowIndex+ '行，数据为:' + rowData);
-					},
-					onSelectAll : function(rows) {
-						alert('你全选择了当前页行，数据为:' + rows);
-					},
-					onUnselectAll : function(rows) {
-						alert('你取消全选择了当前页行，数据为:' + rows);
-					}
 				});
 				$('#dg').datagrid('fixDetailRowHeight', index);
 			},
@@ -134,15 +119,6 @@
 					setTimeout(function() {ddv.datagrid('selectAll');}, 200);
 				}
 			},
-			onUnselect : function(rowIndex, rowData) {
-				alert('你取消选择了第' + rowIndex + '行，数据为:' + rowData);
-			},
-			onSelectAll : function(rows) {
-				alert('你全选择了当前页行，数据为:' + rows);
-			},
-			onUnselectAll : function(rows) {
-				alert('你取消全选择了当前页行，数据为:' + rows);
-			}
 		});
 		$('#pp').pagination({
 			total : 30,
