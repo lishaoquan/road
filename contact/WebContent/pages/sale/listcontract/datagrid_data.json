@@ -1,0 +1,19 @@
+{"total":28,"rows":[
+	{"itemid":"S.N","status":"不显示","listprice":36},
+	{"itemid":"P.S.N","status":"不显示","listprice":18},
+	{"itemid":"Image","status":"不显示","listprice":38},
+	{"itemid":"Code","status":"不显示","listprice":26},
+	{"itemid":"Part Code","status":"不显示","listprice":35},
+	{"itemid":"Item","status":"不显示","listprice":158},
+	{"itemid":"产品","status":"不显示","listprice":83},
+	{"itemid":"Dimension(mm)","status":"不显示","listprice":23},
+	{"itemid":"Description","status":"不显示","listprice":89},
+	{"itemid":"描述","status":"不显示","listprice":63},
+	{"itemid":"Color","status":"不显示","listprice":89},
+	{"itemid":"QTY","status":"不显示","listprice":49},
+	{"itemid":"U/cost","status":"不显示","listprice":86},
+	{"itemid":"Amount","status":"不显示","listprice":88},
+	{"itemid":"CBM","status":"不显示","listprice":85},
+	{"itemid":"GW","status":"不显示","listprice":82},
+	{"itemid":"生产车间","status":"不显示","listprice":19}
+]}

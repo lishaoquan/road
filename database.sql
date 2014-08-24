@@ -121,6 +121,7 @@ CREATE TABLE `contact`.`schemes`(
 	 `columnName` VARCHAR(32) NULL,
 	 `columnValue` VARCHAR(50) NULL,
 	 `contactId` VARCHAR(32) NULL,
+	 `isShowPart` VARCHAR(32) NULL,
       PRIMARY KEY (`id`))
 	 ENGINE = InnoDB;
 		 
