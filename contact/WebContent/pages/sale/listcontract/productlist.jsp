@@ -69,7 +69,7 @@
                 onExpandRow: function(index,row){
                     var ddv = $(this).datagrid('getRowDetail',index).find('table.ddv');
                     ddv.datagrid({
-                        url:'http://www.jeasyui.com/demo/main/datagrid22_getdetail.php?itemid='+row.itemid,
+                        url:'datagrid_data2.json',
                         fitColumns:true,
                         singleSelect:false,
                         rownumbers:true,
