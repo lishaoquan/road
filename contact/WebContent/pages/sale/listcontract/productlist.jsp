@@ -73,6 +73,12 @@
             		handler: function(){
             			alert('购买');
             			}
+            	},'-',{
+            		iconCls: 'icon-cart',
+            		text:'进入购物车',
+            		handler: function(){
+            			alert('进入购物车')
+            			}
             	}],
                 onExpandRow: function(index,row){
                     ddv = $(this).datagrid('getRowDetail',index).find('table.ddv');
