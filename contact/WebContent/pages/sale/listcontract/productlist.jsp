@@ -34,10 +34,16 @@
             <ul class="easyui-tree" data-options="url:'tree_data1.json',method:'get',animate:true,dnd:true"></ul>
         </div>
         <div data-options="region:'center',title:'分类说明和产品列表',iconCls:'icon-ok'">
-        <div title="About" data-options="href:'_content.html'" style="padding:10px">说明</div>
-                <div title="DataGrid" style="padding:5px">
+        <div id="p" class="easyui-panel" title="产品类型说明" 
+		        style="height:150px;padding:10px;background:#fafafa;"
+		        data-options="iconCls:'icon-tip',closable:true,
+		                collapsible:true,minimizable:true,maximizable:true">
+		    <p>此类型说明如下：XXXXXXX</p>
+			</div>
+                <div title="DataGrid" style="padding:5px;">
 					<table id="dg" url="datagrid_data1.json" title="产品列表"
-					            singleSelect="false" fitColumns="true">
+					            singleSelect="false" fitColumns="true"
+					            style="height:370px;">
 					        <thead>
 					            <tr>
 					                <th data-options="field:'ck',checkbox:true"></th>
@@ -62,7 +68,10 @@
             $('#dg').datagrid({
                 view: detailview,
                 singleSelect:false,
+                minimizable:true,
+                maximizable:true,
                 checkOnSelect:true,
+                autoRowHeight:true,
                 rownumbers:true,
                 detailFormatter:function(index,row){
                     return '<div style="padding:2px"><table class="ddv"></table></div>';
