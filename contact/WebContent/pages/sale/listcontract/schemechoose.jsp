@@ -30,7 +30,7 @@
 	<a id="showContract" href="#" class="icon-save" onclick="javascript:alert('输出合同')">合同输出</a>
 </div>
 <div id="p" class="easyui-panel" title="合同方案选择" 
-        style="width:100%;height:100%;padding:0;background:#fafafa;">
+        style="width:100%;height:630px;padding:0;background:#fafafa;">
    <div id="tabss" class="easyui-tabs" data-options="tabHeight:60" style="width:100%;height:550px;">
         <div title="<span class='tt-inner'><img src='../../../images/modem.png'/><br>简易方案</span>" style="padding:10px">
 				<table id="dg1" class="easyui-datagrid" title="表格设置" style="width:100%;height:500px"
