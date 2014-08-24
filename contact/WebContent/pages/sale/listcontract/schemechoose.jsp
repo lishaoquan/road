@@ -27,7 +27,7 @@
 </head>
 <body>
    <div class="easyui-tabs" data-options="tabWidth:100,tabHeight:60" style="width:100%;height:600px">
-        <div title="<span class='tt-inner'><img src='images/modem.png'/><br>简易方案</span>" style="padding:10px">
+        <div title="<span class='tt-inner'><img src='../../../images/modem.png'/><br>简易方案</span>" style="padding:10px">
 			<table class="easyui-propertygrid" style="width:100%;height:500px" data-options="
 			                url: 'propertygrid_data1.json',
 			                method: 'get',
@@ -43,7 +43,7 @@
 			        ]];
 			    </script>
         </div>
-        <div title="<span class='tt-inner'><img src='images/scanner.png'/><br>完整方案</span>" style="padding:10px">
+        <div title="<span class='tt-inner'><img src='../../../images/scanner.png'/><br>完整方案</span>" style="padding:10px">
             			<table class="easyui-propertygrid" style="width:100%;height:500px" data-options="
 			                url: 'propertygrid_data1.json',
 			                method: 'get',
@@ -59,7 +59,7 @@
 			        ]];
 			    </script>
         </div>
-        <div title="<span class='tt-inner'><img src='images/pda.png'/><br>自定义方案</span>" style="padding:10px">
+        <div title="<span class='tt-inner'><img src='../../../images/pda.png'/><br>自定义方案</span>" style="padding:10px">
 	                        自定义方案：<select id="cc" style="width:150px;"></select>
 		    <div id="sp">
 		        <div style="color:#99BBE8;background:#fafafa;padding:5px;">选择一个方案</div>
