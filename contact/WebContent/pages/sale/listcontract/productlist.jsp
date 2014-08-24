@@ -58,6 +58,7 @@
     <script type="text/javascript">
         $(function(){
         	var ddv = null;
+        	var ddvArry = [];
             $('#dg').datagrid({
                 view: detailview,
                 singleSelect:false,
@@ -98,38 +99,58 @@
                             },0);
                         },
                         onSelect:function(rowIndex,rowData){
-                        	alert('你选择了第'+rowIndex+'行，数据为:' + rowData);
                         },
                         onUnselect:function(rowIndex,rowData){
-                        	alert('你取消选择了第'+rowIndex+'行，数据为:' + rowData);
                         },
                         onSelectAll:function(rows){
-                        	alert('你全选择了当前页行，数据为:' + rows);
                         },
                         onUnselectAll:function(rows){
-                        	alert('你取消全选择了当前页行，数据为:' + rows);
                         }
                     });
+                    ddvArry.push(ddv);
                     $('#dg').datagrid('fixDetailRowHeight',index);
                 },
                 onSelect:function(rowIndex,rowData){
-                	alert('你选择了第'+rowIndex+'行，数据为:' + rowData);
                 	$('#dg').datagrid('expandRow',rowIndex);
                 	if (ddv){
-                		//ddv.datagrid('selectAll').delay(5000);
                 		setTimeout(function(){
                 			ddv.datagrid('selectAll');
                         },200);
                 	}
                 },
                 onUnselect:function(rowIndex,rowData){
-                	alert('你取消选择了第'+rowIndex+'行，数据为:' + rowData);
+                	$('#dg').datagrid('expandRow',rowIndex);
+                	if (ddv){
+                		setTimeout(function(){
+                			ddv.datagrid('unselectAll');
+                        },200);
+                	}
+                	$('#dg').datagrid('collapseRow',rowIndex);
                 },
                 onSelectAll:function(rows){
-                	alert('你全选择了当前页行，数据为:' + rows);
+                	$.each(rows, function(rowIndex, row){
+                    	$('#dg').datagrid('expandRow',rowIndex);
+                    	if (ddvArry && ddvArry.length>0){
+                    		$.each(ddvArry, function(i, dd){
+                        		setTimeout(function(){
+                        			dd.datagrid('selectAll');
+                                },1000);
+                    		});
+                    	}
+                		});
                 },
                 onUnselectAll:function(rows){
-                	alert('你取消全选择了当前页行，数据为:' + rows);
+                	$.each(rows, function(rowIndex, row){
+                    	$('#dg').datagrid('expandRow',rowIndex);
+                    	if (ddvArry && ddvArry.length>0){
+                    		$.each(ddvArry, function(i, dd){
+                        		setTimeout(function(){
+                        			dd.datagrid('unselectAll');
+                                },1000);
+                    		});
+                    	}
+                    	$('#dg').datagrid('collapseRow',rowIndex);
+                		});
                 }
             });
             $('#pp').pagination({
