@@ -26,32 +26,37 @@
 	<script src="<%=context %>/js/jquery/locale/easyui-lang-zh_CN.js"></script>
 </head>
 <body>
-    <h2>Tabs with Images</h2>
-    <p>The tab strip can display big images.</p>
-    <div style="margin:20px 0;"></div>
-    <div class="easyui-tabs" data-options="tabWidth:100,tabHeight:60" style="width:700px;height:250px">
-        <div title="<span class='tt-inner'><img src='images/modem.png'/><br>Modem</span>" style="padding:10px">
-            <p>A modem (modulator-demodulator) is a device that modulates an analog carrier signal to encode digital information, and also demodulates such a carrier signal to decode the transmitted information.</p>
+    <h2>合同方案选择</h2>
+    <div class="easyui-layout" style="width:100%;height:550px;">
+        <div id="p" data-options="region:'west'" title="合同方案" style="width:30%;padding:10px">
+	              <div class="easyui-accordion" data-options="multiple:true" style="width:500px;height1:300px;">
+			        <div title="简易方案" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
+			            <p>A programming language is a formal language designed to communicate instructions to a machine, particularly a computer. Programming languages can be used to create programs that control the behavior of a machine and/or to express algorithms precisely.</p>
+			        </div>
+			        <div title="完整方案" style="padding:10px;">
+			            <p>Java (Indonesian: Jawa) is an island of Indonesia. With a population of 135 million (excluding the 3.6 million on the island of Madura which is administered as part of the provinces of Java), Java is the world's most populous island, and one of the most densely populated places in the world.</p>
+			        </div>
+			        <div title="自定义方案" style="padding:10px;">
+			            <p>C# is a multi-paradigm programming language encompassing strong typing, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines.</p>
+			        </div>
+			    </div>
         </div>
-        <div title="<span class='tt-inner'><img src='images/scanner.png'/><br>Scanner</span>" style="padding:10px">
-            <p>In computing, an image scanner—often abbreviated to just scanner—is a device that optically scans images, printed text, handwriting, or an object, and converts it to a digital image.</p>
-        </div>
-        <div title="<span class='tt-inner'><img src='images/pda.png'/><br>Pda</span>" style="padding:10px">
-            <p>A personal digital assistant (PDA), also known as a palmtop computer, or personal data assistant, is a mobile device that functions as a personal information manager. PDAs are largely considered obsolete with the widespread adoption of smartphones.</p>
-        </div>
-        <div title="<span class='tt-inner'><img src='images/tablet.png'/><br>Tablet</span>" style="padding:10px">
-            <p>A tablet computer, or simply tablet, is a one-piece mobile computer. Devices typically have a touchscreen, with finger or stylus gestures replacing the conventional computer mouse.</p>
+        <div data-options="region:'center'" title="Center">
+            <table class="easyui-propertygrid" style="width:100%;height:450px;" data-options="
+                url: 'propertygrid_data1.json',
+                method: 'get',
+                showGroup: true,
+                scrollbarSize: 0,
+                columns: mycolumns
+            ">
+    </table>
         </div>
     </div>
-    <style scoped="scoped">
-        .tt-inner{
-            display:inline-block;
-            line-height:12px;
-            padding-top:5px;
-        }
-        .tt-inner img{
-            border:0;
-        }
-    </style>
 </body>
+<script>
+        var mycolumns = [[
+            {field:'name',title:'MyName',width:100,sortable:true},
+               {field:'value',title:'MyValue',width:100,resizable:false}
+        ]];
+    </script>
 </html>
