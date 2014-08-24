@@ -44,9 +44,9 @@
 					">
 				<thead>
 					<tr>
-						<th data-options="field:'itemid',width:80">第一行标题</th>
-						<th data-options="field:'status',width:80,align:'center',editor:{type:'checkbox',options:{on:'显示',off:'不显示'}}">显示</th>
-						<th data-options="field:'listprice',width:80,align:'right',editor:{type:'numberbox'}">宽度</th>
+						<th data-options="field:'itemid',width:300">第一行标题</th>
+						<th data-options="field:'status',width:300,align:'center',editor:{type:'checkbox',options:{on:'显示',off:'不显示'}}">显示</th>
+						<th data-options="field:'listprice',width:300,align:'right',editor:{type:'numberbox'}">宽度</th>
 					</tr>
 				</thead>
 			</table>
@@ -120,9 +120,9 @@
 					">
 				<thead>
 					<tr>
-						<th data-options="field:'itemid',width:80">第一行标题</th>
-						<th data-options="field:'status',width:80,align:'center',editor:{type:'checkbox',options:{on:'显示',off:'不显示'}}">显示</th>
-						<th data-options="field:'listprice',width:80,align:'right',editor:{type:'numberbox'}">宽度</th>
+						<th data-options="field:'itemid',width:300">第一行标题</th>
+						<th data-options="field:'status',width:300,align:'center',editor:{type:'checkbox',options:{on:'显示',off:'不显示'}}">显示</th>
+						<th data-options="field:'listprice',width:300,align:'right',editor:{type:'numberbox'}">宽度</th>
 					</tr>
 				</thead>
 			</table>
@@ -223,9 +223,9 @@
 					">
 				<thead>
 					<tr>
-						<th data-options="field:'itemid',width:80">第一行标题</th>
-						<th data-options="field:'status',width:80,align:'center',editor:{type:'checkbox',options:{on:'显示',off:'不显示'}}">显示</th>
-						<th data-options="field:'listprice',width:80,align:'right',editor:{type:'numberbox'}">宽度</th>
+						<th data-options="field:'itemid',width:300">第一行标题</th>
+						<th data-options="field:'status',width:300,align:'center',editor:{type:'checkbox',options:{on:'显示',off:'不显示'}}">显示</th>
+						<th data-options="field:'listprice',width:300,align:'right',editor:{type:'numberbox'}">宽度</th>
 					</tr>
 				</thead>
 			</table>
