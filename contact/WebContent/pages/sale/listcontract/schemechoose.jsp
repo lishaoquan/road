@@ -60,7 +60,32 @@
 			    </script>
         </div>
         <div title="<span class='tt-inner'><img src='images/pda.png'/><br>自定义方案</span>" style="padding:10px">
-             <table class="easyui-propertygrid" style="width:100%;height:500px" data-options="
+	                        自定义方案：<select id="cc" style="width:150px;"></select>
+		    <div id="sp">
+		        <div style="color:#99BBE8;background:#fafafa;padding:5px;">选择一个方案</div>
+		        <div style="padding:10px">
+		            <input type="radio" name="lang" value="01"><span>Java</span><br/>
+		            <input type="radio" name="lang" value="02"><span>C#</span><br/>
+		            <input type="radio" name="lang" value="03"><span>Ruby</span><br/>
+		            <input type="radio" name="lang" value="04"><span>Basic</span><br/>
+		            <input type="radio" name="lang" value="05"><span>Fortran</span>
+		        </div>
+		    </div>
+		    <script type="text/javascript">
+		        $(function(){
+		            $('#cc').combo({
+		                required:true,
+		                editable:false
+		            });
+		            $('#sp').appendTo($('#cc').combo('panel'));
+		            $('#sp input').click(function(){
+		                var v = $(this).val();
+		                var s = $(this).next('span').text();
+		                $('#cc').combo('setValue', v).combo('setText', s).combo('hidePanel');
+		            });
+		        });
+		    </script>
+             <table class="easyui-propertygrid" style="width:100%;height:450px;margin-top:15px;" data-options="
 			                url: 'propertygrid_data1.json',
 			                method: 'get',
 			                showGroup: true,
