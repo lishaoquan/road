@@ -65,7 +65,9 @@
 			    </script>
         </div>
         <div title="<span class='tt-inner'><img src='../../../images/pda.png'/><br>自定义方案</span>" style="padding:10px">
-	                        自定义方案：<select id="cc" style="width:150px;"></select>
+	        <div style="margin-bottom:10px;">                
+	                             自定义方案：<select id="cc" style="width:150px;"></select>
+	        </div>
 		    <div id="sp">
 		        <div style="color:#99BBE8;background:#fafafa;padding:5px;">选择一个方案</div>
 		        <div style="padding:10px">
