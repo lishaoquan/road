@@ -76,6 +76,7 @@
                         loadMsg:'',
                         height:'auto',
                         columns:[[
+                            {field:'ck',checkbox:true},
                             {field:'orderid',title:'Order ID',width:200},
                             {field:'quantity',title:'Quantity',width:100,align:'right'},
                             {field:'unitprice',title:'Unit Price',width:100,align:'right'}
