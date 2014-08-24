@@ -26,7 +26,7 @@
 	<script src="<%=context %>/js/jquery/locale/easyui-lang-zh_CN.js"></script>
 </head>
 <body>
-   <div class="easyui-tabs" data-options="tabWidth:100,tabHeight:60" style="width:100%;height:600px">
+   <div id="tabss" class="easyui-tabs" data-options="tabWidth:100,tabHeight:60" style="width:100%;height:600px">
         <div title="<span class='tt-inner'><img src='../../../images/modem.png'/><br>简易方案</span>" style="padding:10px">
 			<table class="easyui-propertygrid" style="width:100%;height:500px" data-options="
 			                url: 'propertygrid_data1.json',
@@ -112,4 +112,20 @@
         }
     </style>
 </body>
+<script type="text/javascript">
+$('#tabss').tabs({
+    border:false,
+    tabPosition:'left',
+    toolPosition:'right',
+    tools:[{
+		iconCls:'icon-save',
+		text:'输出合同',
+		handler:function(){
+			alert('save')
+		}
+	}],
+    onSelect:function(title,index){
+    }
+});
+</script>
 </html>
