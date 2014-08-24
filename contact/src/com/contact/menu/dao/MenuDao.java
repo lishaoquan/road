@@ -26,7 +26,7 @@ public class MenuDao {
 	 */
     public static List<Menu> getAllMenu(){
     	List<Menu> menuList = new ArrayList<Menu>();
-    	List<Record> list = Db.find("select * from " + Constant.TABLE_NAME.MENU);
+    	List<Record> list = Db.find("select * from " + Constant.TABLE_NAME.MENU + " order by sort asc");
     	if (null != list && !list.isEmpty()){
     		for (Record record : list) {
     			Menu menu = new Menu();
