@@ -33,36 +33,156 @@
         style="width:100%;height:100%;padding:0;background:#fafafa;">
    <div id="tabss" class="easyui-tabs" data-options="tabHeight:60" style="width:100%;height:550px;">
         <div title="<span class='tt-inner'><img src='../../../images/modem.png'/><br>简易方案</span>" style="padding:10px">
-			<table class="easyui-propertygrid" style="width:100%;height:500px" data-options="
-			                url: 'propertygrid_data1.json',
-			                method: 'get',
-			                showGroup: true,
-			                scrollbarSize: 0,
-			                columns: mycolumns
-			            ">
-			    </table>
-			    <script>
-			        var mycolumns = [[
-			            {field:'name',title:'MyName',width:100,sortable:true},
-			               {field:'value',title:'MyValue',width:100,resizable:false}
-			        ]];
-			    </script>
+				<table id="dg1" class="easyui-datagrid" title="表格设置" style="width:100%;height:500px"
+					data-options="
+						iconCls: 'icon-edit',
+						singleSelect: true,
+						toolbar: '#tb1',
+						url: 'datagrid_data.json',
+						method: 'get',
+						onClickRow: onClickRow1
+					">
+				<thead>
+					<tr>
+						<th data-options="field:'itemid',width:80">第一行标题</th>
+						<th data-options="field:'status',width:80,align:'center',editor:{type:'checkbox',options:{on:'显示',off:'不显示'}}">显示</th>
+						<th data-options="field:'listprice',width:80,align:'right',editor:{type:'numberbox'}">宽度</th>
+					</tr>
+				</thead>
+			</table>
+			<div id="tb1" style="height:auto">
+			    &nbsp;&nbsp;隐藏部件行:<input type="checkbox">
+			</div>
+			<script type="text/javascript">
+				var editIndex1 = undefined;
+				function endEditing1(){
+					if (editIndex1 == undefined){return true}
+					if ($('#dg1').datagrid('validateRow', editIndex1)){
+						//var ed = $('#dg').datagrid('getEditor', {index:editIndex,field:'productid'});
+						//var productname = $(ed.target).combobox('getText');
+						//$('#dg').datagrid('getRows')[editIndex]['productname'] = productname;
+						$('#dg1').datagrid('endEdit', editIndex1);
+						editIndex1 = undefined;
+						return true;
+					} else {
+						return false;
+					}
+				}
+				function onClickRow1(index){
+					if (editIndex1 != index){
+						if (endEditing1()){
+							$('#dg1').datagrid('selectRow', index)
+									.datagrid('beginEdit', index);
+							editIndex1 = index;
+						} else {
+							$('#dg1').datagrid('selectRow', editIndex1);
+						}
+					}
+				}
+				function append1(){
+					if (endEditing1()){
+						$('#dg1').datagrid('appendRow',{status:'P'});
+						editIndex1 = $('#dg1').datagrid('getRows').length-1;
+						$('#dg1').datagrid('selectRow', editIndex1)
+								.datagrid('beginEdit', editIndex1);
+					}
+				}
+				function removeit1(){
+					if (editIndex1 == undefined){return}
+					$('#dg1').datagrid('cancelEdit', editIndex1)
+							.datagrid('deleteRow', editIndex1);
+					editIndex1 = undefined;
+				}
+				function accept1(){
+					if (endEditing1()){
+						$('#dg1').datagrid('acceptChanges');
+					}
+				}
+				function reject1(){
+					$('#dg1').datagrid('rejectChanges');
+					editIndex1 = undefined;
+				}
+				function getChanges1(){
+					var rows = $('#dg1').datagrid('getChanges');
+					alert(rows.length+' rows are changed!');
+				}
+			</script>
         </div>
         <div title="<span class='tt-inner'><img src='../../../images/scanner.png'/><br>完整方案</span>" style="padding:10px">
-            			<table class="easyui-propertygrid" style="width:100%;height:500px" data-options="
-			                url: 'propertygrid_data1.json',
-			                method: 'get',
-			                showGroup: true,
-			                scrollbarSize: 0,
-			                columns: mycolumns
-			            ">
-			    </table>
-			    <script>
-			        var mycolumns = [[
-			            {field:'name',title:'MyName',width:100,sortable:true},
-			               {field:'value',title:'MyValue',width:100,resizable:false}
-			        ]];
-			    </script>
+				<table id="dg2" class="easyui-datagrid" title="表格设置" style="width:100%;height:500px"
+					data-options="
+						iconCls: 'icon-edit',
+						singleSelect: true,
+						toolbar: '#tb2',
+						url: 'datagrid_data.json',
+						method: 'get',
+						onClickRow: onClickRow2
+					">
+				<thead>
+					<tr>
+						<th data-options="field:'itemid',width:80">第一行标题</th>
+						<th data-options="field:'status',width:80,align:'center',editor:{type:'checkbox',options:{on:'显示',off:'不显示'}}">显示</th>
+						<th data-options="field:'listprice',width:80,align:'right',editor:{type:'numberbox'}">宽度</th>
+					</tr>
+				</thead>
+			</table>
+			<div id="tb2" style="height:auto">
+			    &nbsp;&nbsp;隐藏部件行:<input type="checkbox">
+			</div>
+			<script type="text/javascript">
+				var editIndex2 = undefined;
+				function endEditing2(){
+					if (editIndex2 == undefined){return true}
+					if ($('#dg2').datagrid('validateRow', editIndex2)){
+						//var ed = $('#dg').datagrid('getEditor', {index:editIndex,field:'productid'});
+						//var productname = $(ed.target).combobox('getText');
+						//$('#dg').datagrid('getRows')[editIndex]['productname'] = productname;
+						$('#dg2').datagrid('endEdit', editIndex2);
+						editIndex2 = undefined;
+						return true;
+					} else {
+						return false;
+					}
+				}
+				function onClickRow2(index){
+					if (editIndex2 != index){
+						if (endEditing2()){
+							$('#dg2').datagrid('selectRow', index)
+									.datagrid('beginEdit', index);
+							editIndex2 = index;
+						} else {
+							$('#dg2').datagrid('selectRow', editIndex2);
+						}
+					}
+				}
+				function append2(){
+					if (endEditing2()){
+						$('#dg2').datagrid('appendRow',{status:'P'});
+						editIndex2 = $('#dg2').datagrid('getRows').length-1;
+						$('#dg2').datagrid('selectRow', editIndex2)
+								.datagrid('beginEdit', editIndex2);
+					}
+				}
+				function removeit2(){
+					if (editIndex2 == undefined){return}
+					$('#dg2').datagrid('cancelEdit', editIndex2)
+							.datagrid('deleteRow', editIndex2);
+					editIndex2 = undefined;
+				}
+				function accept2(){
+					if (endEditing2()){
+						$('#dg2').datagrid('acceptChanges');
+					}
+				}
+				function reject2(){
+					$('#dg2').datagrid('rejectChanges');
+					editIndex2 = undefined;
+				}
+				function getChanges2(){
+					var rows = $('#dg1').datagrid('getChanges');
+					alert(rows.length+' rows are changed!');
+				}
+			</script>         
         </div>
         <div title="<span class='tt-inner'><img src='../../../images/pda.png'/><br>自定义方案</span>" style="padding:10px">
 	        <div style="margin-bottom:10px;">                
@@ -97,7 +217,7 @@
 						iconCls: 'icon-edit',
 						singleSelect: true,
 						toolbar: '#tb',
-						url: 'datagrid_data1.json',
+						url: 'datagrid_data.json',
 						method: 'get',
 						onClickRow: onClickRow
 					">
@@ -110,7 +230,7 @@
 				</thead>
 			</table>
 			<div id="tb" style="height:auto">
-			           隐藏部件行:<input type="checkbox">
+			    &nbsp;&nbsp;隐藏部件行:<input type="checkbox">
 				<a href="javascript:void(0)" style="float: right;" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">保存方案</a>
 			</div>
 			<script type="text/javascript">
