@@ -48,7 +48,7 @@
 			<div class="toptitle">合同管理系统</div>
 		</div>
 		<div style="padding:60px 0;">
-			<form name="loginForm" action="<%=context %>/home/login" method="post" onsubmit="return verifyBeforeSbumit()">>
+			<form name="loginForm" action="<%=context %>/home/login" method="post" onsubmit="return verifyBeforeSbumit()">
 				<div style="padding-left:150px">
 					<table cellpadding="0" cellspacing="3">
 						<tr>
