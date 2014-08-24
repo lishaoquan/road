@@ -37,7 +37,7 @@
         <div title="About" data-options="href:'_content.html'" style="padding:10px">说明</div>
                 <div title="DataGrid" style="padding:5px">
 					<table id="dg" url="datagrid_data1.json" title="产品列表"
-					            singleSelect="true" fitColumns="true">
+					            singleSelect="false" fitColumns="true">
 					        <thead>
 					            <tr>
 					                <th data-options="field:'ck',checkbox:true"></th>
@@ -50,9 +50,7 @@
 					            </tr>
 					        </thead>
 					    </table>
-					    <div id="pp" class="easyui-pagination" style="background:#efefef;border:1px solid #ccc;"
-                              data-options="total:2000,pageSize:10">
-                       </div>
+                        <div id="pp" style="background:#efefef;border:1px solid #ccc;"></div>
                 </div>
         </div>
     </div>
@@ -91,6 +89,20 @@
                         }
                     });
                     $('#dg').datagrid('fixDetailRowHeight',index);
+                }
+            });
+            $('#pp').pagination({
+                total:30,
+                pageSize:10,
+                pageNumber:1,
+                onSelectPage: function(pageNumber, pageSize){
+                	alert("第"+pageNumber+"页，每页显示"+pageSize+"记录");
+                	$('#pp').pagination('loading');
+                    $('#pp').pagination('refresh', 'show_content.php?page='+pageNumber+'&pageSize='+pageSize);
+                    $('#pp').pagination('loaded');
+                },
+                onChangePageSize:function(pageSize){
+                	alert("用户改变每页显示记录数为:"+pageSize);
                 }
             });
         });
