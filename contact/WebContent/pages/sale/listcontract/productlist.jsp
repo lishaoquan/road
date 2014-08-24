@@ -57,19 +57,29 @@
 </body>
     <script type="text/javascript">
         $(function(){
+        	var ddv = null;
             $('#dg').datagrid({
                 view: detailview,
                 singleSelect:false,
+                checkOnSelect:true,
                 rownumbers:true,
                 detailFormatter:function(index,row){
                     return '<div style="padding:2px"><table class="ddv"></table></div>';
                 },
+                toolbar: [{
+            		iconCls: 'icon-save',
+            		text:'购买',
+            		handler: function(){
+            			alert('购买');
+            			}
+            	}],
                 onExpandRow: function(index,row){
-                    var ddv = $(this).datagrid('getRowDetail',index).find('table.ddv');
+                    ddv = $(this).datagrid('getRowDetail',index).find('table.ddv');
                     ddv.datagrid({
                         url:'datagrid_data2.json',
                         fitColumns:true,
                         singleSelect:false,
+                        checkOnSelect:true,
                         rownumbers:true,
                         loadMsg:'',
                         height:'auto',
@@ -86,9 +96,40 @@
                             setTimeout(function(){
                                 $('#dg').datagrid('fixDetailRowHeight',index);
                             },0);
+                        },
+                        onSelect:function(rowIndex,rowData){
+                        	alert('你选择了第'+rowIndex+'行，数据为:' + rowData);
+                        },
+                        onUnselect:function(rowIndex,rowData){
+                        	alert('你取消选择了第'+rowIndex+'行，数据为:' + rowData);
+                        },
+                        onSelectAll:function(rows){
+                        	alert('你全选择了当前页行，数据为:' + rows);
+                        },
+                        onUnselectAll:function(rows){
+                        	alert('你取消全选择了当前页行，数据为:' + rows);
                         }
                     });
                     $('#dg').datagrid('fixDetailRowHeight',index);
+                },
+                onSelect:function(rowIndex,rowData){
+                	alert('你选择了第'+rowIndex+'行，数据为:' + rowData);
+                	$('#dg').datagrid('expandRow',rowIndex);
+                	if (ddv){
+                		//ddv.datagrid('selectAll').delay(5000);
+                		setTimeout(function(){
+                			ddv.datagrid('selectAll');
+                        },200);
+                	}
+                },
+                onUnselect:function(rowIndex,rowData){
+                	alert('你取消选择了第'+rowIndex+'行，数据为:' + rowData);
+                },
+                onSelectAll:function(rows){
+                	alert('你全选择了当前页行，数据为:' + rows);
+                },
+                onUnselectAll:function(rows){
+                	alert('你取消全选择了当前页行，数据为:' + rows);
                 }
             });
             $('#pp').pagination({
