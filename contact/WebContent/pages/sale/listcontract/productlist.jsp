@@ -40,7 +40,7 @@
 					<table id="dg" style="width:650px;height:250px"
 					            url="datagrid_data1.json" 
 					            title="DataGrid - SubGrid"
-					            singleSelect="true" fitColumns="true" data-options="rownumbers:true,singleSelect:false,url:'datagrid_data1.json',method:'get'">
+					            singleSelect="true" fitColumns="true">
 					        <thead>
 					            <tr>
 					                <th data-options="field:'ck',checkbox:true"></th>
@@ -61,6 +61,8 @@
         $(function(){
             $('#dg').datagrid({
                 view: detailview,
+                singleSelect:false,
+                rownumbers:true,
                 detailFormatter:function(index,row){
                     return '<div style="padding:2px"><table class="ddv"></table></div>';
                 },
