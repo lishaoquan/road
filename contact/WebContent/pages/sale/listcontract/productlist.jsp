@@ -40,6 +40,12 @@
 		                collapsible:true,minimizable:true,maximizable:true">
 		    <p>此类型说明如下：XXXXXXX</p>
 			</div>
+			<div id="tb" style="padding:5px;height:auto">
+        <div style="margin-bottom:5px">
+            <a href="#" id="buyProduct" class="easyui-linkbutton" iconCls="icon-add" plain="true">购买</a>
+            <a href="#" id="nextPage" class="easyui-linkbutton" style="float:right;" iconCls="icon-cart" plain="true">进入销售合同</a>
+        </div>
+        </div>
                 <div title="DataGrid" style="padding:5px;">
 					<table id="dg" url="datagrid_data1.json" title="产品列表"
 					            singleSelect="false" fitColumns="true"
@@ -76,22 +82,7 @@
                 detailFormatter:function(index,row){
                     return '<div style="padding:2px"><table class="ddv"></table></div>';
                 },
-                toolbar: [{
-            		iconCls: 'icon-save',
-            		text:'购买',
-            		handler: function(){
-            			alert('购买');
-            			}
-            	},'->','->','->','->','->','->','->','->','->','->','->','->','->','->','->',
-            	'->','->','->','->','->','->','->','->','->','->','->','->','->','->','->',
-            	'->','->','->','->','->','->','->','->','->','->',
-            	{
-            		iconCls: 'icon-cart',
-            		text:'下一步',
-            		handler: function(){
-            			   location.href = '/contact/pages/sale/listcontract/productCart.jsp';
-            			}
-            	}],
+                toolbar:'#tb',
                 onExpandRow: function(index,row){
                     ddv = $(this).datagrid('getRowDetail',index).find('table.ddv');
                     ddv.datagrid({
@@ -184,6 +175,13 @@
                 onChangePageSize:function(pageSize){
                 	alert("用户改变每页显示记录数为:"+pageSize);
                 }
+            });
+            
+            $('#buyProduct').bind('click', function(){
+                alert('购买产品了！');
+            });
+            $('#nextPage').bind('click', function(){
+            	location.href="/contact/pages/sale/listcontract/productCart.jsp";
             });
         });
     </script>
