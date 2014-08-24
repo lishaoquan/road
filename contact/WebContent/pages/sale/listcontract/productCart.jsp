@@ -58,7 +58,7 @@
 					<td></td>
 				    <td></td>
 				    <td rowspan="1" style="padding-left:100px;">
-            				<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" data-options="iconCls:'icon-lock'">下一步</a>
+            				<a href="javascript:void(0)" id="submitForm" class="easyui-linkbutton" data-options="iconCls:'icon-lock'">下一步</a>
 					</td>
 				</tr>
 				<tr>
@@ -143,6 +143,10 @@
 				alert("用户改变每页显示记录数为:" + pageSize);
 			}
 		});
+		
+        $('#submitForm').bind('click', function(){
+        	location.href="/contact/pages/sale/listcontract/schemechoose.jsp";
+        });
 	});
 </script>
 
