@@ -58,7 +58,7 @@
 					<td></td>
 				    <td></td>
 				    <td rowspan="1" style="padding-left:100px;">
-            				<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">下一步</a>
+            				<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" data-options="iconCls:'icon-lock'">下一步</a>
 					</td>
 				</tr>
 				<tr>
