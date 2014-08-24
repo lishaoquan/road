@@ -92,20 +92,81 @@
 		            });
 		        });
 		    </script>
-             <table class="easyui-propertygrid" style="width:100%;height:450px;margin-top:15px;" data-options="
-			                url: 'propertygrid_data1.json',
-			                method: 'get',
-			                showGroup: true,
-			                scrollbarSize: 0,
-			                columns: mycolumns
-			            ">
-			    </table>
-			    <script>
-			        var mycolumns = [[
-			            {field:'name',title:'MyName',width:100,sortable:true},
-			               {field:'value',title:'MyValue',width:100,resizable:false}
-			        ]];
-			    </script>
+				<table id="dg" class="easyui-datagrid" title="表格设置" style="width:100%;height:500px"
+					data-options="
+						iconCls: 'icon-edit',
+						singleSelect: true,
+						toolbar: '#tb',
+						url: 'datagrid_data1.json',
+						method: 'get',
+						onClickRow: onClickRow
+					">
+				<thead>
+					<tr>
+						<th data-options="field:'itemid',width:80">第一行标题</th>
+						<th data-options="field:'status',width:80,align:'center',editor:{type:'checkbox',options:{on:'显示',off:'不显示'}}">显示</th>
+						<th data-options="field:'listprice',width:80,align:'right',editor:{type:'numberbox'}">宽度</th>
+					</tr>
+				</thead>
+			</table>
+			<div id="tb" style="height:auto">
+			           隐藏部件行:<input type="checkbox">
+				<a href="javascript:void(0)" style="float: right;" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">保存方案</a>
+			</div>
+			<script type="text/javascript">
+				var editIndex = undefined;
+				function endEditing(){
+					if (editIndex == undefined){return true}
+					if ($('#dg').datagrid('validateRow', editIndex)){
+						//var ed = $('#dg').datagrid('getEditor', {index:editIndex,field:'productid'});
+						//var productname = $(ed.target).combobox('getText');
+						//$('#dg').datagrid('getRows')[editIndex]['productname'] = productname;
+						$('#dg').datagrid('endEdit', editIndex);
+						editIndex = undefined;
+						return true;
+					} else {
+						return false;
+					}
+				}
+				function onClickRow(index){
+					if (editIndex != index){
+						if (endEditing()){
+							$('#dg').datagrid('selectRow', index)
+									.datagrid('beginEdit', index);
+							editIndex = index;
+						} else {
+							$('#dg').datagrid('selectRow', editIndex);
+						}
+					}
+				}
+				function append(){
+					if (endEditing()){
+						$('#dg').datagrid('appendRow',{status:'P'});
+						editIndex = $('#dg').datagrid('getRows').length-1;
+						$('#dg').datagrid('selectRow', editIndex)
+								.datagrid('beginEdit', editIndex);
+					}
+				}
+				function removeit(){
+					if (editIndex == undefined){return}
+					$('#dg').datagrid('cancelEdit', editIndex)
+							.datagrid('deleteRow', editIndex);
+					editIndex = undefined;
+				}
+				function accept(){
+					if (endEditing()){
+						$('#dg').datagrid('acceptChanges');
+					}
+				}
+				function reject(){
+					$('#dg').datagrid('rejectChanges');
+					editIndex = undefined;
+				}
+				function getChanges(){
+					var rows = $('#dg').datagrid('getChanges');
+					alert(rows.length+' rows are changed!');
+				}
+			</script>
         </div>
     </div>
     <style scoped="scoped">
