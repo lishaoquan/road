@@ -47,22 +47,41 @@
 var toolbar = [{
     text:'查看',
     iconCls:'icon-open',
-    handler:function(){alert('查看')}
+    handler:function(){view();}
 },'-',{
     text:'修改',
     iconCls:'icon-edit',
     handler:function(){alert('修改')}
 }];
-
+/*
+$('#dg').datagrid({
+    url:'contractlist.json',
+    method:'get',
+    onDblClickRow:'showContract',
+    rownumbers:true,
+    singleSelect:true,
+    toolbar:toolbar,
+    columns:[[
+        {field:'itemid',title:'Item ID',width:80},
+        {field:'code',title:'Code',width:100},
+        {field:'name',title:'Name',width:100},
+        {field:'price',title:'Price',width:100,align:'right'}
+    ]]
+});*/
 function showContract(){
 	
 }
-
+function editContact()
+{
+	alert("editContract");
+}
 function modify(){
 	
 }
 function view(){
-	
+	var a= $('#dg').datagrid('selectRow');
+	debugger;
+	alert(a);
 }
 </script>
 </html>

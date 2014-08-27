@@ -27,18 +27,16 @@
 	 <script type="text/javascript" src="<%=context %>/pages/sale/listcontract/datagrid-detailview.js"></script>
 </head>
 <body>
-        <div id="p" class="easyui-panel" title="产品类型说明" 
-		        style="height:150px;padding:10px;background:#fafafa;"
-		        data-options="iconCls:'icon-tip',collapsible:true,">
-			</div>
-			<div id="tb" style="padding:5px;height:auto">
+		<div id="tb" style="padding:5px;height:auto">
         <div style="margin-bottom:5px">
+        	<div style="margin:5px 0;"></div>
+    			<input class="easyui-searchbox" data-options="prompt:'通过编号搜索',searcher:doSearch" style="width:300px"></input>
             <a href="#" id="buyProduct" class="easyui-linkbutton" iconCls="icon-add" plain="true">购买</a>
             <a href="#" id="nextPage" class="easyui-linkbutton" style="float:right;" iconCls="icon-cart" plain="true">进入销售合同</a>
         </div>
         </div>
                 <div title="DataGrid" style="padding:5px;">
-					<table id="dg" url="datagrid_data1.json" title="产品列表"
+					<table id="dg" url="../sale/listcontract/datagrid_data1.json" title="产品列表"
 					            singleSelect="false" fitColumns="true"
 					            style="height:370px;">
 					        <thead>
@@ -58,6 +56,9 @@
     </div>
 </body>
     <script type="text/javascript">
+	    function doSearch(value){
+	        alert('You input: ' + value);
+	    }
         $(function(){
         	var ddv = null;
         	var ddvArry = [];
