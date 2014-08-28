@@ -7,12 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>合同管理</title>
+<title>新订单生产安排</title>
 <%
 	String context = request.getContextPath();
 	Object obj = session.getAttribute("userInfo");
 	if (null == obj) {
-		response.sendRedirect("../login.jsp");
+		response.sendRedirect("../../login.jsp");
 		return;
 	}
 	String basePath = request.getScheme() + "://"
@@ -27,75 +27,73 @@
 <script src="<%=context%>/js/jquery/jquery.min.js"></script>
 <script src="<%=context%>/js/jquery/jquery.easyui.min.js"></script>
 <script src="<%=context%>/js/jquery/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="<%=context%>/js/jquery/plugins/datagrid-filter.js"></script>
 </head>
 <body>
-	 <table id="dg" title="筛选合同" style="width:950px;height:500px" data-options="singleSelect:true,data:data,toolbar:'#tb'">
+	<table id="dg" class="easyui-datagrid" title="新订单生产安排" style="width:100%;height:auto"
+            data-options="rownumbers:true,singleSelect:true,url:'contractlist.json',method:'get',toolbar:'#tb'">
         <thead>
             <tr>
-                <th data-options="field:'itemid',width:150">Item ID</th>
-                <th data-options="field:'productid',width:150">Product</th>
-                <th data-options="field:'listprice',width:150,align:'right'">List Price</th>
-                <th data-options="field:'unitcost',width:150,align:'right'">Unit Cost</th>
-                <th data-options="field:'attr1',width:150">Attribute</th>
-                <th data-options="field:'status',width:150,align:'center'">Status</th>
+                <th data-options="field:'itemid',width:100">Item ID</th>
+                <th data-options="field:'productid',width:100">Product</th>
+                <th data-options="field:'listprice',width:100,align:'right'">List Price</th>
+                <th data-options="field:'unitcost',width:100,align:'right'">Unit Cost</th>
+                <th data-options="field:'attr1',width:250">Attribute</th>
+                <th data-options="field:'status',width:100,align:'center'">Status</th>
             </tr>
         </thead>
     </table>
-    <div id="tb">
-	    <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:gotoViewOrders()">选择合同生成生成单</a>
-	 </div>
     
+    <div id="tb" style="padding:5px;height:auto">
+        <div>
+			<div class="easyui-panel" title="检索条件" 
+			        style="width:100%;height:auto;padding:10px;background:#fafafa;"
+			        data-options="collapsible:true">
+			  <table cellpadding="2">
+				<tr>
+					<td>合同编码:</td>
+					<td><input class="easyui-textbox" type="text" name="contractCode"/></td>
+					<td>客户名称:</td>
+					<td><input class="easyui-textbox" type="text" name="customerName"/></td>
+					<td>客户编码:</td>
+					<td><input class="easyui-textbox" type="text" name="customerCode"/></td>
+				    <td></td>
+				    <td></td>
+				</tr>
+				<tr>
+					<td>制单时间:</td>
+					<td><input class="easyui-textbox" type="text" name="orderTime" /></td>
+					<td>业务员:</td>
+					<td><input class="easyui-textbox" type="text" name="operator"/></td>
+					<td></td>
+				    <td></td>
+				    <td></td>
+				    <td></td>
+				    <td rowspan="1" style="padding-left:100px;">
+            			<a id="search" href="#" class="easyui-linkbutton" iconCls="icon-search">查询</a>
+					</td>
+				</tr>
+			</table>  
+			</div>
+        </div>
+        <div style="margin-bottom:5px">
+            <a id="produce" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">选择合同生成生成单</a>
+        </div>
+    </div>
 </body>
 <script type="text/javascript">
-	function gotoViewOrders()
-	{
-		location.href="/contact/pages/production/orderList.jsp";
-	}
-	var data = [
-            {"productid":"FI-SW-01","productname":"Koi","unitcost":10.00,"status":"P","listprice":36.50,"attr1":"Large","itemid":"EST-1"},
-            {"productid":"K9-DL-01","productname":"Dalmation","unitcost":12.00,"status":"P","listprice":18.50,"attr1":"Spotted Adult Female","itemid":"EST-10"},
-            {"productid":"RP-SN-01","productname":"Rattlesnake","unitcost":12.00,"status":"P","listprice":38.50,"attr1":"Venomless","itemid":"EST-11"},
-            {"productid":"RP-SN-01","productname":"Rattlesnake","unitcost":12.00,"status":"N","listprice":26.50,"attr1":"Rattleless","itemid":"EST-12"},
-            {"productid":"RP-LI-02","productname":"Iguana","unitcost":12.00,"status":"N","listprice":35.50,"attr1":"Green Adult","itemid":"EST-13"},
-            {"productid":"FL-DSH-01","productname":"Manx","unitcost":12.00,"status":"P","listprice":158.50,"attr1":"Tailless","itemid":"EST-14"},
-            {"productid":"FL-DSH-01","productname":"Manx","unitcost":12.00,"status":"P","listprice":83.50,"attr1":"With tail","itemid":"EST-15"},
-            {"productid":"FL-DLH-02","productname":"Persian","unitcost":12.00,"status":"N","listprice":23.50,"attr1":"Adult Female","itemid":"EST-16"},
-            {"productid":"FL-DLH-02","productname":"Persian","unitcost":12.00,"status":"P","listprice":89.50,"attr1":"Adult Male","itemid":"EST-17"},
-            {"productid":"AV-CB-01","productname":"Amazon Parrot","unitcost":92.00,"status":"N","listprice":63.50,"attr1":"Adult Male","itemid":"EST-18"}
-        ];
-        $(function(){
-            var dg = $('#dg').datagrid();
-            dg.datagrid('enableFilter', [{
-                field:'listprice',
-                type:'numberbox',
-                options:{precision:1},
-                op:['equal','notequal','less','greater']
-            },{
-                field:'unitcost',
-                type:'numberbox',
-                options:{precision:1},
-                op:['equal','notequal','less','greater']
-            },{
-                field:'status',
-                type:'combobox',
-                options:{
-                    panelHeight:'auto',
-                    data:[{value:'',text:'All'},{value:'P',text:'P'},{value:'N',text:'N'}],
-                    onChange:function(value){
-                        if (value == ''){
-                            dg.datagrid('removeFilterRule', 'status');
-                        } else {
-                            dg.datagrid('addFilterRule', {
-                                field: 'status',
-                                op: 'equal',
-                                value: value
-                            });
-                        }
-                        dg.datagrid('doFilter');
-                    }
-                }
-            }]);
-        });
+$(function(){
+    $('#produce').bind('click', function(){
+    	var record = $('#dg').datagrid('getSelected');
+    	if (null == record){
+    		$.messager.alert('提示','请选择一条记录再操作!','info');
+    		return;
+    	}
+    	location.href="/contact/pages/production/orderList.jsp";
+    });
+    
+    $('#search').bind('click', function(){
+        alert('根据条件查询合同！');
+    });
+});
 </script>
 </html>

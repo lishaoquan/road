@@ -7,12 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>合同管理</title>
+<title>生产清单</title>
 <%
 	String context = request.getContextPath();
 	Object obj = session.getAttribute("userInfo");
 	if (null == obj) {
-		response.sendRedirect("../login.jsp");
+		response.sendRedirect("../../login.jsp");
 		return;
 	}
 	String basePath = request.getScheme() + "://"
@@ -30,7 +30,11 @@
 <script type="text/javascript" src="<%=context%>/js/jquery/plugins/datagrid-filter.js"></script>
 </head>
 <body>
-	 <div id="p" class="easyui-panel" title="生成清单(五金车间)" style="width:1000px;height:300px;padding:10px;">
+<div id="p" class="easyui-panel" title="导出生产单操作" 
+        style="width:100%;height:auto;background:#fafafa;">
+    	    <a href="#" id="export" class="easyui-linkbutton" data-options="iconCls:'icon-print',plain:true">导出生产单</a>
+</div>
+	 <div id="p" class="easyui-panel" title="生产清单(五金车间)" style="width:100%;height:300px;padding:10px;">
 	 	<div id="p_description" class="easyui-panel" style="width:100%;height:60px>
 	 		<table cellpadding="2">
 	 			<tr>
@@ -48,7 +52,7 @@
 	 	</div>
 	 </div>
 	 <div style="height: 5px;"></div>
-	 <div id="p2" class="easyui-panel" title="生成清单(板式车间)" style="width:1000px;height:300px;padding:10px;">
+	 <div id="p2" class="easyui-panel" title="生产清单(板式车间)" style="width:100%;height:300px;padding:10px;">
 	 	<div id="p2_description" class="easyui-panel" style="width:100%;height:60px>
 	 		<table cellpadding="2">
 	 			<tr>
@@ -92,6 +96,14 @@ $(function(){
 	     {field:'attr1',title:'Price',width:100,align:'right'}
 	    ]]
 	});
+	
+	 $('#export').bind('click', function(){
+			 $.messager.confirm('确认', '确认要导出生产单吗?', function(r){
+				if (r){
+					alert("开始导出!");
+				}
+			});
+    });
 });
 
 </script>

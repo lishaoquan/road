@@ -12,7 +12,7 @@
 		  String context = request.getContextPath(); 
 		  Object obj = session.getAttribute("userInfo");
 			 if (null == obj){
-				 response.sendRedirect("../login.jsp");
+				 response.sendRedirect("../../login.jsp");
 				 return;
 			 }
 		      String basePath = request.getScheme() + "://"
