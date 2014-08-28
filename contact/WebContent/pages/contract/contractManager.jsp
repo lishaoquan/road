@@ -84,10 +84,20 @@
 <script type="text/javascript">
 $(function(){
     $('#info').bind('click', function(){
-        location.href = "<%=context%>/pages/contract/viewContract.jsp";
+    	var record = $('#dg').datagrid('getSelected');
+    	if (null == record){
+    		$.messager.alert('提示','请选择一条记录再操作!','info');
+    		return;
+    	}
+    	location.href = "<%=context%>/pages/contract/viewContract.jsp";
     });
     
     $('#edit').bind('click', function(){
+    	var record = $('#dg').datagrid('getSelected');
+    	if (null == record){
+    		$.messager.alert('提示','请选择一条记录再操作!','info');
+    		return;
+    	}
     	location.href = "<%=context%>/pages/contract/editProductCart.jsp";
     });
     
