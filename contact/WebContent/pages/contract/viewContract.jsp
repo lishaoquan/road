@@ -48,25 +48,25 @@
 			</tr>
 			<tr>
 				<td class="label">客户地址:</td>
-				<td><input class="easyui-textbox" type="text" name="subject"/></td>
+				<td><input class="easyui-textbox" type="text" name="subject" readonly="readonly"/></td>
 				<td class="label">客户编号:</td>
-				<td><input class="easyui-textbox" type="text" name="subject"/></td>
+				<td><input class="easyui-textbox" type="text" name="subject" readonly="readonly"/></td>
 				<td class="label">固话:</td>
-				<td><input class="easyui-textbox" type="text" name="subject"/></td>
+				<td><input class="easyui-textbox" type="text" name="subject" readonly="readonly"/></td>
 				<td class="label">手机:</td>
-				<td><input class="easyui-textbox" type="text" name="subject"/></td>
+				<td><input class="easyui-textbox" type="text" name="subject" readonly="readonly"/></td>
 			</tr>
 			<tr>
 				<td class="label">传真:</td>
-				<td><input class="easyui-textbox" type="text" name="subject"/></td>
+				<td><input class="easyui-textbox" type="text" name="subject" readonly="readonly"/></td>
 				<td class="label">邮箱:</td>
-				<td><input class="easyui-textbox" type="text" name="subject"/></td>
+				<td><input class="easyui-textbox" type="text" name="subject" readonly="readonly"/></td>
 				<td class="label">业务编号:</td>
-				<td><input class="easyui-textbox" type="text" name="subject"/></td>
+				<td><input class="easyui-textbox" type="text" name="subject" readonly="readonly"/></td>
 			</tr>
 		</table>
 	</div>
-	<table style="padding-top: 5px;" id="dg" url="datagrid_data1.json" title="合同产品信息" singleSelect="false" fitColumns="true">
+	<table style="padding-top: 5px;" id="dg" url="contractlist.json" title="合同产品信息" singleSelect="false" fitColumns="true">
 		<thead>
 			<tr>
 				<th field="itemid" width="80">Item ID</th>
@@ -78,9 +78,8 @@
 			</tr>
 		</thead>
 	</table>
-	<div id="tb">
-		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print',plain:true">导出合同</a>
-		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-mini-refresh',plain:true">生成生产单</a>
+    <div id="tb">
+		<a id="back" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-back',plain:true">返回</a>
 	</div>
 </body>
 <script type="text/javascript">
@@ -118,6 +117,9 @@
 				$('#dg').datagrid('fixDetailRowHeight', index);
 			},
 		});
+	    $('#back').bind('click', function(){
+	        history.go(-1);
+	    });
 	});
 </script>
 

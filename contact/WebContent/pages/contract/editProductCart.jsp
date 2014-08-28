@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>合同预览</title>
+<title>已选购的产品生成合同</title>
 <%
 	String context = request.getContextPath();
 	Object obj = session.getAttribute("userInfo");
@@ -30,43 +30,48 @@
 <script type="text/javascript"
 	src="<%=context%>/pages/sale/listcontract/datagrid-detailview.js"></script>
 </head>
-<style>
-.label{text-align: right;}
-</style>
 <body>
 	<div class="easyui-panel" title="合同基本信息"  data-options="collapsible:true">
-		<table cellpadding="2">
-			<tr>
-				<td class="label">客户名称:</td>
-				<td><input class="easyui-textbox" type="text" name="name" value ="ttt" readonly="readonly"/></td>
-				<td class="label">日期:</td>
-				<td><input class="easyui-textbox" type="text" name="name" readonly="readonly"/></td>
-				<td class="label">客户国家:</td>
-				<td><input class="easyui-textbox" type="text" name="email" readonly="readonly"/></td>
-				<td class="label">合同编号:</td>
-				<td><input class="easyui-textbox" type="text" name="email" readonly="readonly"/></td>
-			</tr>
-			<tr>
-				<td class="label">客户地址:</td>
-				<td><input class="easyui-textbox" type="text" name="subject"/></td>
-				<td class="label">客户编号:</td>
-				<td><input class="easyui-textbox" type="text" name="subject"/></td>
-				<td class="label">固话:</td>
-				<td><input class="easyui-textbox" type="text" name="subject"/></td>
-				<td class="label">手机:</td>
-				<td><input class="easyui-textbox" type="text" name="subject"/></td>
-			</tr>
-			<tr>
-				<td class="label">传真:</td>
-				<td><input class="easyui-textbox" type="text" name="subject"/></td>
-				<td class="label">邮箱:</td>
-				<td><input class="easyui-textbox" type="text" name="subject"/></td>
-				<td class="label">业务编号:</td>
-				<td><input class="easyui-textbox" type="text" name="subject"/></td>
-			</tr>
-		</table>
+		<form id="ff" method="post">
+			<table cellpadding="2">
+				<tr>
+					<td>客户名称:</td>
+					<td><input class="easyui-textbox" type="text" name="name" readonly="readonly"/></td>
+					<td>日期:</td>
+					<td><input class="easyui-textbox" type="text" name="name" readonly="readonly"/></td>
+					<td>客户国家:</td>
+					<td><input class="easyui-textbox" type="text" name="email" readonly="readonly"/></td>
+					<td>合同编号:</td>
+					<td><input class="easyui-textbox" type="text" name="email" readonly="readonly"/></td>
+				    <td></td>
+				    <td></td>
+				</tr>
+				<tr>
+					<td>客户地址:</td>
+					<td><input class="easyui-textbox" type="text" name="subject" readonly="readonly"/></td>
+					<td>客户编号:</td>
+					<td><input class="easyui-textbox" type="text" name="subject" readonly="readonly"/></td>
+					<td>固话:</td>
+					<td><input class="easyui-textbox" type="text" name="subject" readonly="readonly"/></td>
+					<td>手机:</td>
+					<td><input class="easyui-textbox" type="text" name="subject" readonly="readonly"/></td>
+					<td></td>
+				    <td></td>
+				</tr>
+				<tr>
+					<td>传真:</td>
+					<td><input class="easyui-textbox" type="text" name="subject"/></td>
+					<td>邮箱:</td>
+					<td><input class="easyui-textbox" type="text" name="subject" /></td>
+					<td>业务编号:</td>
+					<td><input class="easyui-textbox" type="text" name="subject"/></td>
+					<td></td>
+				    <td></td>
+				</tr>
+			</table>
+		</form>
 	</div>
-	<table style="padding-top: 5px;" id="dg" url="datagrid_data1.json" title="合同产品信息" singleSelect="false" fitColumns="true">
+	<table style="padding-top: 5px;" id="dg" url="contractlist.json" title="合同产品信息" singleSelect="false" fitColumns="true">
 		<thead>
 			<tr>
 				<th field="itemid" width="80">Item ID</th>
@@ -79,18 +84,20 @@
 		</thead>
 	</table>
 	<div id="tb">
-		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print',plain:true">导出合同</a>
-		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-mini-refresh',plain:true">生成生产单</a>
+	    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true">保存</a>
+	    <a href="#" class="easyui-linkbutton" style="float:right;" data-options="iconCls:'icon-mini-refresh',plain:true">生成生产单</a>
+		<a href="#" class="easyui-linkbutton" style="float:right;" data-options="iconCls:'icon-print',plain:true">导出合同</a>
 	</div>
 </body>
 <script type="text/javascript">
 	$(function() {
+		
 		var ddv = null;
 		$('#dg').datagrid({
 			view : detailview,
 			singleSelect : false,
 			rownumbers : true,
-			toolbar: '#tb',
+			toolbar:'#tb',
 			detailFormatter : function(index, row) {
 				return '<div style="padding:2px"><table class="ddv"></table></div>';
 			},
@@ -117,7 +124,32 @@
 				});
 				$('#dg').datagrid('fixDetailRowHeight', index);
 			},
+			onSelect : function(rowIndex, rowData) {
+				alert('你选择了第' + rowIndex + '行，数据为:' + rowData);
+				$('#dg').datagrid('expandRow', rowIndex);
+				if (ddv) {
+					setTimeout(function() {ddv.datagrid('selectAll');}, 200);
+				}
+			},
 		});
+		$('#pp').pagination({
+			total : 30,
+			pageSize : 10,
+			pageNumber : 1,
+			onSelectPage : function(pageNumber, pageSize) {
+				alert("第" + pageNumber + "页，每页显示" + pageSize + "记录");
+				$('#pp').pagination('loading');
+				$('#pp').pagination('refresh','show_content.php?page=' + pageNumber+ '&pageSize=' + pageSize);
+				$('#pp').pagination('loaded');
+			},
+			onChangePageSize : function(pageSize) {
+				alert("用户改变每页显示记录数为:" + pageSize);
+			}
+		});
+		
+        $('#submitForm').bind('click', function(){
+        	location.href="/contact/pages/sale/listcontract/schemechoose.jsp";
+        });
 	});
 </script>
 

@@ -29,59 +29,71 @@
 <script src="<%=context%>/js/jquery/locale/easyui-lang-zh_CN.js"></script>
 </head>
 <body>
-	<table id="dg" class="easyui-datagrid" title="查看/修改合同" style="width:700px;height:auto"
-            data-options="rownumbers:true,iconCls:'icon-edit', singleSelect: true,toolbar: toolbar, url: 'contractlist.json',method: 'get', onDblClickRow: showContract">
+	<table id="dg" class="easyui-datagrid" title="查询/修改合同" style="width:100%;height:auto"
+            data-options="rownumbers:true,singleSelect:true,url:'contractlist.json',method:'get',toolbar:'#tb'">
         <thead>
             <tr>
-                <th data-options="field:'itemid',width:80">Item ID</th>
+                <th data-options="field:'itemid',width:100">Item ID</th>
                 <th data-options="field:'productid',width:100">Product</th>
-                <th data-options="field:'listprice',width:80,align:'right'">List Price</th>
-                <th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
+                <th data-options="field:'listprice',width:100,align:'right'">List Price</th>
+                <th data-options="field:'unitcost',width:100,align:'right'">Unit Cost</th>
                 <th data-options="field:'attr1',width:250">Attribute</th>
-                <th data-options="field:'status',width:60,align:'center'">Status</th>
+                <th data-options="field:'status',width:100,align:'center'">Status</th>
             </tr>
         </thead>
     </table>
+    
+    <div id="tb" style="padding:5px;height:auto">
+        <div>
+			<div class="easyui-panel" title="检索条件" 
+			        style="width:100%;height:auto;padding:10px;background:#fafafa;"
+			        data-options="collapsible:true">
+			  <table cellpadding="2">
+				<tr>
+					<td>合同编码:</td>
+					<td><input class="easyui-textbox" type="text" name="contractCode"/></td>
+					<td>客户名称:</td>
+					<td><input class="easyui-textbox" type="text" name="customerName"/></td>
+					<td>客户编码:</td>
+					<td><input class="easyui-textbox" type="text" name="customerCode"/></td>
+				    <td></td>
+				    <td></td>
+				</tr>
+				<tr>
+					<td>制单时间:</td>
+					<td><input class="easyui-textbox" type="text" name="orderTime" /></td>
+					<td>业务员:</td>
+					<td><input class="easyui-textbox" type="text" name="operator"/></td>
+					<td></td>
+				    <td></td>
+				    <td></td>
+				    <td></td>
+				    <td rowspan="1" style="padding-left:100px;">
+            			<a id="search" href="#" class="easyui-linkbutton" iconCls="icon-search">查询</a>
+					</td>
+				</tr>
+			</table>  
+			</div>
+        </div>
+        <div style="margin-bottom:5px">
+            <a id="info" href="#" class="easyui-linkbutton" iconCls="icon-tip" plain="true">查看</a>
+            <a id="edit" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
+        </div>
+    </div>
 </body>
 <script type="text/javascript">
-var toolbar = [{
-    text:'查看',
-    iconCls:'icon-open',
-    handler:function(){view();}
-},'-',{
-    text:'修改',
-    iconCls:'icon-edit',
-    handler:function(){alert('修改')}
-}];
-/*
-$('#dg').datagrid({
-    url:'contractlist.json',
-    method:'get',
-    onDblClickRow:'showContract',
-    rownumbers:true,
-    singleSelect:true,
-    toolbar:toolbar,
-    columns:[[
-        {field:'itemid',title:'Item ID',width:80},
-        {field:'code',title:'Code',width:100},
-        {field:'name',title:'Name',width:100},
-        {field:'price',title:'Price',width:100,align:'right'}
-    ]]
-});*/
-function showContract(){
-	
-}
-function editContact()
-{
-	alert("editContract");
-}
-function modify(){
-	
-}
-function view(){
-	var a= $('#dg').datagrid('selectRow');
-	debugger;
-	alert(a);
-}
+$(function(){
+    $('#info').bind('click', function(){
+        location.href = "<%=context%>/pages/contract/viewContract.jsp";
+    });
+    
+    $('#edit').bind('click', function(){
+    	location.href = "<%=context%>/pages/contract/editProductCart.jsp";
+    });
+    
+    $('#search').bind('click', function(){
+        alert('根据条件查询合同！');
+    });
+});
 </script>
 </html>
