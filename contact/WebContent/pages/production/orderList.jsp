@@ -32,7 +32,8 @@
 <body>
 <div id="p" class="easyui-panel" title="导出生产单操作" 
         style="width:100%;height:auto;background:#fafafa;">
-    	    <a href="#" id="export" class="easyui-linkbutton" data-options="iconCls:'icon-print',plain:true">导出生产单</a>
+            <a id="back" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-back',plain:true">返回</a>
+    	    <a href="#" id="export" style="float:right;" class="easyui-linkbutton" data-options="iconCls:'icon-print',plain:true">导出生产单</a>
 </div>
 	 <div id="p" class="easyui-panel" title="生产清单(五金车间)" style="width:100%;height:300px;padding:10px;">
 	 	<div id="p_description" class="easyui-panel" style="width:100%;height:60px>
@@ -104,6 +105,10 @@ $(function(){
 				}
 			});
     });
+    
+    $('#back').bind('click', function(){
+	        history.go(-1);
+	    });
 });
 
 </script>
