@@ -48,11 +48,31 @@
         </thead>
     </table>
     <div id="mm" class="easyui-menu" style="width:120px;">
-        <div onclick="append()" data-options="iconCls:'icon-add'">Append</div>
-        <div onclick="removeIt()" data-options="iconCls:'icon-remove'">Remove</div>
+        <div onclick="append()" data-options="iconCls:'icon-add'">新增</div>
+        <div onclick="modify()" data-options="iconCls:'icon-edit'">修改</div>
+        <div onclick="removeIt()" data-options="iconCls:'icon-remove'">删除</div>
         <div class="menu-sep"></div>
-        <div onclick="collapse()">Collapse</div>
-        <div onclick="expand()">Expand</div>
+        <div onclick="collapse()">收缩</div>
+        <div onclick="expand()">展开</div>
+    </div>
+    
+       <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+            closed="true" buttons="#dlg-buttons">
+        <div class="ftitle">产品类型信息</div>
+        <form id="fm" method="post" novalidate>
+            <div class="fitem">
+                <label>类型名称:</label>
+                <input name="name" class="easyui-textbox" required="true">
+            </div>
+            <div class="fitem">
+                <label>类型图片:</label>
+                <input name="begin" class="easyui-textbox" required="true">
+            </div>
+            <div class="fitem">
+                <label>类型说明:</label>
+                <input name="end" class="easyui-textbox">
+            </div>
+        </form>
     </div>
     <script type="text/javascript">
         function formatProgress(value){
@@ -75,6 +95,8 @@
         }
         var idIndex = 100;
         function append(){
+            $('#dlg').dialog('open').dialog('setTitle','新增产品类型');
+            $('#fm').form('clear');
             idIndex++;
             var d1 = new Date();
             var d2 = new Date();
@@ -91,6 +113,13 @@
                     progress: parseInt(Math.random()*100)
                 }]
             })
+        }
+        function modify(){
+            var row = $('#tg').treegrid('getSelected');
+            if (row){
+            	$('#dlg').dialog('open').dialog('setTitle','修改产品类型');
+                $('#fm').form('load',row);
+            }
         }
         function removeIt(){
             var node = $('#tg').treegrid('getSelected');
@@ -111,5 +140,29 @@
             }
         }
     </script>
+    
+        <style type="text/css">
+        #fm{
+            margin:0;
+            padding:10px 30px;
+        }
+        .ftitle{
+            font-size:14px;
+            font-weight:bold;
+            padding:5px 0;
+            margin-bottom:10px;
+            border-bottom:1px solid #ccc;
+        }
+        .fitem{
+            margin-bottom:5px;
+        }
+        .fitem label{
+            display:inline-block;
+            width:80px;
+        }
+        .fitem input{
+            width:160px;
+        }
+    </style>
 </body>
 </html>
