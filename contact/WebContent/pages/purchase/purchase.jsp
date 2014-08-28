@@ -37,7 +37,20 @@
         </div>
         <div data-options="region:'center',title:'采购管理',iconCls:'icon-ok'">
 			<div id="tb" style="padding:5px;height:auto">
-		        <div style="margin-bottom:5px">
+						<div class="easyui-panel" title="检索条件" 
+			        style="width:100%;height:auto;padding:10px;background:#fafafa;"
+			        data-options="collapsible:true">
+			  <table cellpadding="2">
+				<tr>
+					<td>产品编码:</td>
+					<td><input class="easyui-textbox" type="text" name="productCode"/></td>
+					<td style="padding-left:50px;">
+            			<a id="search" href="#" class="easyui-linkbutton" iconCls="icon-search">查询</a>
+					</td>
+				</tr>
+			</table>  
+			</div>
+		        <div style="margin:5px">
 		            <a href="#" id="showPurchase" class="easyui-linkbutton" iconCls="icon-tip" plain="true">查看产品采购状态</a>
 		        </div>
            </div>
