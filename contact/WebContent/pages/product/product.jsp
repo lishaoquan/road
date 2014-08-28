@@ -37,19 +37,19 @@
             rownumbers="true" fitColumns="true" singleSelect="true">
         <thead>
             <tr>
-                <th field="image" width="50">产品图片</th>
-                <th field="firstname" width="50">产品名称</th>
-                <th field="lastname" width="50">产品编码</th>
-                <th field="phone" width="50">Item</th>
-                <th field="email" width="50">尺寸</th>
-                <th field="email" width="50">Description</th>
-                <th field="email" width="50">描述</th>
-                <th field="email" width="50">QTY</th>
-                <th field="email" width="50">U/cost</th>
-                <th field="email" width="50">Amount</th>
-                <th field="email" width="50">单元产品 CBM</th>
-                <th field="email" width="50">单元 G.W</th>
-                <th field="email" width="50">车间</th>
+                <th field="image" width="auto">产品图片</th>
+                <th field="firstname" width="auto">产品名称</th>
+                <th field="lastname" width="auto">产品编码</th>
+                <th field="phone" width="auto">Item</th>
+                <th field="email" width="auto">尺寸</th>
+                <th field="email0" width="auto">Description</th>
+                <th field="email1" width="auto">描述</th>
+                <th field="email3" width="auto">QTY</th>
+                <th field="email4" width="auto">U/cost</th>
+                <th field="email5" width="auto">Amount</th>
+                <th field="email6" width="auto">单元产品 CBM</th>
+                <th field="email7" width="auto">单元 G.W</th>
+                <th field="email8" width="auto">车间</th>
             </tr>
         </thead>
     </table>
