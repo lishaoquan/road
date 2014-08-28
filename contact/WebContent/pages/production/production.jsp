@@ -61,7 +61,7 @@
 				</tr>
 				<tr>
 					<td>制单时间:</td>
-					<td><input class="easyui-textbox" type="text" name="orderTime" /></td>
+					<td><input class="easyui-datebox" name="orderTime" /></td>
 					<td>业务员:</td>
 					<td><input class="easyui-textbox" type="text" name="operator"/></td>
 					<td></td>
