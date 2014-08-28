@@ -78,15 +78,19 @@
 			</tr>
 		</thead>
 	</table>
+	<div id="tb">
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print',plain:true">导出合同</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-mini-refresh',plain:true">生成生产单</a>
+	</div>
 </body>
 <script type="text/javascript">
 	$(function() {
-		
 		var ddv = null;
 		$('#dg').datagrid({
 			view : detailview,
 			singleSelect : false,
 			rownumbers : true,
+			toolbar: '#tb',
 			detailFormatter : function(index, row) {
 				return '<div style="padding:2px"><table class="ddv"></table></div>';
 			},
