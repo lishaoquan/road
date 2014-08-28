@@ -31,7 +31,7 @@
  <ul class="easyui-tree" data-options="url:'producttype.json',method:'get',animate:true,dnd:true"></ul>
 </div>
 <div data-options="region:'center',title:'产品管理',iconCls:'icon-ok'">
- <table id="dg" title="产品管理" class="easyui-datagrid" style="width:100%;height:600px"
+ <table id="dg" title="产品管理" class="easyui-datagrid" style="width:100%;height:550px"
             url="product.json"
             toolbar="#toolbar" pagination="true"
             rownumbers="true" fitColumns="true" singleSelect="true">
