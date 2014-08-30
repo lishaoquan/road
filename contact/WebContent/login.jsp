@@ -54,11 +54,7 @@
 						<tr>
 							<td>用户角色</td>
 							<td>
-							<select name="role">
-							<option value="0">超级管理员</option>
-							<option value="1">业务员</option>
-							<option value="2">采购员</option>
-							<option value="3">客户</option>
+							<select id="cc" class="easyui-combobox" name="role" style="width:140px;">
 							</select>
 							</td>
 						</tr>
@@ -88,6 +84,16 @@
 	</div>
 </body>
 <script type="text/javascript">
+    $(function(){
+    	$('#cc').combobox({
+    	    url:'/contact/role/roleCombo',
+    	    valueField:'id',
+    	    textField:'roleName',
+    	    onLoadSuccess:function(){
+    	    	$('#cc').combobox('select','--请选择--');
+    	    }
+    	});
+    });
 	<%
 	   Object fromLogin = session.getAttribute("fromLogin");
 	   if (null != fromLogin){

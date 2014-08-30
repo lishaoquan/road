@@ -34,6 +34,15 @@ public class RoleController extends Controller{
 	}
 	
 	/**
+	 * 加载角色的下拉框
+	 */
+	public void roleCombo(){
+		//获取所有的角色信息
+		List<Role> roleList = RoleDao.getAllRole();
+		renderJson(roleList);
+	}
+	
+	/**
 	 * 新增一个角色信息
 	 */
 	public void add(){
