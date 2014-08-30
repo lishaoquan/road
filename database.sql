@@ -173,3 +173,16 @@ INSERT INTO `menu` (`menuid`,`menuName`,`sort`,`parentId`,`url`) VALUES ('ee200f
 INSERT INTO `menu` (`menuid`,`menuName`,`sort`,`parentId`,`url`) VALUES ('fe4d065e248b4a59aae41750ebf3ff8a','权限管理',3,'2','/pages/auth/auth.jsp');
 
 
+/*
+-- Query: SELECT * FROM contact.role
+LIMIT 0, 1000
+
+-- Date: 2014-08-30 23:01
+*/
+INSERT INTO `role` (`id`,`roleName`,`sort`,`desc`) VALUES ('4ee14522420941a6b9695dbbb7d029e2','超级管理员',1,'超级管理员');
+INSERT INTO `role` (`id`,`roleName`,`sort`,`desc`) VALUES ('c45630a288df4971a38673dee6d351e4','业务员',2,'业务员');
+INSERT INTO `role` (`id`,`roleName`,`sort`,`desc`) VALUES ('c700a46ecb734c96a8b52ba16156da6a','普通管理员',5,'普通管理员');
+INSERT INTO `role` (`id`,`roleName`,`sort`,`desc`) VALUES ('e9722500ea1e498aa1f282f1a3a95743','采购员',3,'采购员');
+INSERT INTO `role` (`id`,`roleName`,`sort`,`desc`) VALUES ('ecd6adb5ef1c4fc9a348033f5d3b645d','客户',4,'客户');
+
+
