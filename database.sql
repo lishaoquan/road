@@ -179,6 +179,7 @@ LIMIT 0, 1000
 
 -- Date: 2014-08-30 23:01
 */
+DELETE FROM `contact`.`role`;
 INSERT INTO `role` (`id`,`roleName`,`sort`,`desc`) VALUES ('4ee14522420941a6b9695dbbb7d029e2','超级管理员',1,'超级管理员');
 INSERT INTO `role` (`id`,`roleName`,`sort`,`desc`) VALUES ('c45630a288df4971a38673dee6d351e4','业务员',2,'业务员');
 INSERT INTO `role` (`id`,`roleName`,`sort`,`desc`) VALUES ('c700a46ecb734c96a8b52ba16156da6a','普通管理员',5,'普通管理员');
