@@ -21,6 +21,8 @@ public class Constant {
 
 		public static final String MENU = "menu";
 		
+		public static final String ROLE = "role";
+		
 		public static final String PRODUCT = "product";
 		
 		public static final String PRODUCT_CATEGORY = "productcategory";
