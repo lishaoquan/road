@@ -91,7 +91,6 @@
            	}
         }
         function saveRole(){
-        	alert(url);
             $('#fm').form('submit',{
                 url: url,
                 onSubmit: function(){
