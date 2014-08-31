@@ -4,6 +4,8 @@ import com.contact.login.controller.LoginController;
 import com.contact.login.controller.LoginOutController;
 import com.contact.login.controller.ToLoginController;
 import com.contact.menu.controller.MenuController;
+import com.contact.product.controller.ProductCategoryController;
+import com.contact.product.controller.ProductController;
 import com.contact.role.controller.RoleController;
 import com.contact.test.controlller.HelloWordController;
 import com.contact.user.controller.UserController;
@@ -22,6 +24,9 @@ public class ContactRoutes extends Routes {
 		add("/menu", MenuController.class);
 		add("/role", RoleController.class);
 		add("/user", UserController.class);
+		add("/category",ProductCategoryController.class);
+		add("/product",ProductController.class);
 		add("/", ToLoginController.class);
+	
 	}
 }

@@ -28,8 +28,6 @@
 </head>
 <body>
     <div class="easyui-layout" style="width:100%;height:600px;">
-<!--         <div data-options="region:'north'" style="height:50px"></div>
-        <div data-options="region:'south',split:true" style="height:50px;"></div> -->
         <div data-options="region:'west',split:true" title="产品分类类型" style="width:180px;">
             <ul class="easyui-tree" data-options="url:'tree_data1.json',method:'get',animate:true,dnd:true"></ul>
         </div>

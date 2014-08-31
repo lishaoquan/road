@@ -98,8 +98,10 @@ $(function(){
         var nodes = $('#menu').tree('getChecked');
         s = '';
         for(var i=0; i<nodes.length; i++){
-            if (s != '') s += '-';
-            s += nodes[i].id;
+            if (s != '') {
+            	s += '-';
+            }
+           	s += nodes[i].id;
         }
     }
     
