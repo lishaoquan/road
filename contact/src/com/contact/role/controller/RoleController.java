@@ -3,13 +3,21 @@
  */
 package com.contact.role.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
+
+import net.sf.json.JSONArray;
+
+import com.contact.menu.model.RoleMenu;
 import com.contact.role.dao.RoleDao;
+import com.contact.role.dao.RoleMenuDao;
 import com.contact.role.model.Role;
 import com.contact.util.Result;
+import com.contact.util.TreeNode;
 import com.contact.util.UUIDUtil;
 import com.jfinal.core.Controller;
 
@@ -40,6 +48,26 @@ public class RoleController extends Controller{
 		//获取所有的角色信息
 		List<Role> roleList = RoleDao.getAllRole();
 		renderJson(roleList);
+	}
+	
+	/**
+	 * 角色树
+	 */
+	public void roleTree(){
+		List<Role> roleList = RoleDao.getAllRole();
+		Role root = new Role();
+		root.setId("-1");
+		root.setRoleName("角色节点");
+		root.setSort(-1);
+		TreeNode rootNode = Role.assembleTreeNode(root);
+        if (null != roleList){
+        	for (Role role : roleList) {
+        		TreeNode treeNode = Role.assembleTreeNode(role);
+        		rootNode.addChild(treeNode);
+			}
+        }		
+		JSONArray json = rootNode.toJsonArrayOfNoChecked();
+		renderText(json.toString());
 	}
 	
 	/**
@@ -127,5 +155,41 @@ public class RoleController extends Controller{
 		String id = getPara("id");
 		Role role = RoleDao.findRoleById(id);
 		renderJson(role);
+	}
+	
+	/**
+	 * 新增角色菜单信息
+	 */
+	public void addRoleMenu(){
+		List<RoleMenu> list = new ArrayList<RoleMenu>();
+		String menuIds = getPara("menuIds");
+		String roleId = getPara("roleId");
+		//现将该角色的对应菜单全部清除,后面统一添加啊
+		RoleMenuDao.removeRoleMenu(roleId);
+		String[] menuIdArr = menuIds.split("-");
+		for (String menuId : menuIdArr) {
+			if (StringUtils.isNotBlank(menuId)){
+				RoleMenu roleMenu = new RoleMenu();
+				roleMenu.setId(UUIDUtil.generate());
+				roleMenu.setMenuId(menuId);
+				roleMenu.setRoleId(roleId);
+				list.add(roleMenu);
+			}
+		}
+		RoleMenuDao.saveRoleMenu(list);
+		Result result = new Result();
+		result.setCode("0");
+		result.setName("新增");
+		result.setMsg("菜单分配成功");
+		renderJson(result);
+	}
+	
+	/**
+	 * 根据角色获取对应的菜单信息
+	 */
+	public void getMenusByRole(){
+		String roleId = getPara("roleId");
+		List<RoleMenu> list = RoleMenuDao.loadMenusByRole(roleId);
+		renderJson(list);
 	}
 }

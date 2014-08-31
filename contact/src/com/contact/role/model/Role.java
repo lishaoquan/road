@@ -5,6 +5,8 @@ package com.contact.role.model;
 
 import java.io.Serializable;
 
+import com.contact.util.TreeNode;
+
 /**
  * 系统中的角色模型
  * @author Administrator
@@ -55,5 +57,16 @@ public class Role implements Serializable{
 
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+	
+	/**
+	 * 组装角色树节点
+	 * @param role
+	 * @return
+	 */
+	public static TreeNode assembleTreeNode(Role role){
+		TreeNode roleNode = new TreeNode(role.getId(),role.getRoleName());
+		roleNode.setSortValueInteger(role.getSort());
+		return roleNode;
 	}
 }
