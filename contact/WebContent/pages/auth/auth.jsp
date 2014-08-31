@@ -71,10 +71,14 @@ $(function(){
 	
 	$('#menu').tree({
 		onLoadSuccess:function(node, data){
+			var roleId = '';
+			if (currentNode){
+				roleId = currentNode.id;
+			}
 			$.ajax({
 				  type: "POST",
 				  url: "/contact/role/getMenusByRole",
-				  data: {roleId:currentNode.id},
+				  data: {roleId:roleId},
 				  dataType:'json',
 				  success:function(data, textStatus){
 					  if (data && data.length > 0){
