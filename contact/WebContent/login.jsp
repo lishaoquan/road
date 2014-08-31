@@ -52,13 +52,6 @@
 				<div style="padding-left:150px">
 					<table cellpadding="0" cellspacing="3">
 						<tr>
-							<td>用户角色</td>
-							<td>
-							<select id="cc" class="easyui-combobox" name="role" style="width:140px;">
-							</select>
-							</td>
-						</tr>
-						<tr>
 							<td>登录帐号</td>
 							<td><input name="username"></input></td>
 						</tr>
@@ -84,16 +77,6 @@
 	</div>
 </body>
 <script type="text/javascript">
-    $(function(){
-    	$('#cc').combobox({
-    	    url:'/contact/role/roleCombo',
-    	    valueField:'id',
-    	    textField:'roleName',
-    	    onLoadSuccess:function(){
-    	    	$('#cc').combobox('select','--请选择--');
-    	    }
-    	});
-    });
 	<%
 	   Object fromLogin = session.getAttribute("fromLogin");
 	   if (null != fromLogin){

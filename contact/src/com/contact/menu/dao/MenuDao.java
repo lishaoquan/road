@@ -103,4 +103,22 @@ public class MenuDao {
 		}
 		return menu;
 	}
+	
+	/**
+	 * 查询根节点菜单
+	 * @return
+	 */
+	public static Menu findRootMenu(){
+		Record record = Db.findFirst("select * from " + Constant.TABLE_NAME.MENU + " where parentId = '-1'");
+		Menu menu = null;
+		if (null != record && StringUtils.isNotBlank(record.getStr("menuid"))){
+			menu = new Menu();
+			menu.setMenuId(record.getStr("menuid"));
+			menu.setMenuName(record.getStr("menuName"));
+			menu.setParentId(record.getStr("parentId"));
+			menu.setSort(record.getInt("sort"));
+			menu.setUrl(record.getStr("url"));
+		}
+		return menu;
+	}
 }
