@@ -3,9 +3,13 @@
  */
 package com.contact.user.db;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.lang.StringUtils;
 
 import com.contact.constant.Constant;
+import com.contact.user.model.RoleUser;
 import com.contact.user.model.User;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
@@ -54,4 +58,58 @@ public class UserDao {
 		}
 		return user;
 	}
+	
+	/**
+	 * 查询所有的用户信息
+	 * @return
+	 */
+	public static List<User> findAllUsers(){
+    	List<User> userList = new ArrayList<User>();
+    	List<Record> list = Db.find("select * from " + Constant.TABLE_NAME.USER);
+    	if (null != list && !list.isEmpty()){
+    		for (Record record : list) {
+    			User user = new User();
+    			user.setId(record.getStr("id"));
+    			RoleUser roleUser = RoleUserDao.findRoleByUserId(record.getStr("id"));
+    			if (null != roleUser){
+    				user.setRole(roleUser.getRoleId());
+    			}
+    			user.setEmail(record.getStr("email"));
+    			user.setPassword(record.getStr("password"));
+    			user.setUserId(record.getStr("userId"));
+    			user.setUserName(record.getStr("userName"));
+    			userList.add(user);
+			}
+    	}
+    	return userList;
+	}
+	
+	/**
+	 * 新增用户信息
+	 * @param user
+	 */
+	public static void saveUser(User user){
+		Record record = new Record().set("id",user.getId())
+				.set("email", user.getEmail()).set("password", user.getPassword())
+				.set("userId", user.getUserId()).set("userName", user.getUserName());
+		Db.save(Constant.TABLE_NAME.USER, record);
+	}
+	
+    /**
+     * 更新用户信息
+     * @param user
+     */
+    public static void updateUser(User user){
+    	String sql = "update " + Constant.TABLE_NAME.USER + " set userName = '" + user.getUserName()
+    			+ "',email='" + user.getEmail() + "' where id = '" + user.getId() + "'";
+    	Db.update(sql);
+    }
+    
+    /**
+     * 根据主键删除用户信息
+     * @param id
+     */
+    public static void removeUser(String id){
+    	Db.deleteById(Constant.TABLE_NAME.USER, "id",id);
+    }
 }

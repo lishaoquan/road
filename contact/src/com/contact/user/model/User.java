@@ -4,6 +4,7 @@
 package com.contact.user.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.contact.role.model.Role;
@@ -32,7 +33,10 @@ public class User implements Serializable{
     private String email;
     
     //用户角色集合
-    private List<Role> role;
+    private List<Role> roles;
+    
+    //用户角色单个
+    private String role;
 
 	public String getId() {
 		return id;
@@ -74,11 +78,26 @@ public class User implements Serializable{
 		this.email = email;
 	}
 
-	public List<Role> getRole() {
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+	public void addRole(Role role){
+		if (null == this.roles){
+			this.roles = new ArrayList<Role>();
+		}
+		this.roles.add(role);
+	}
+
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(List<Role> role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 }

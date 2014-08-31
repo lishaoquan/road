@@ -18,6 +18,8 @@ public class Constant {
 	public class TABLE_NAME {
 
 		public static final String USER = "user";
+		
+		public static final String ROLEUSER = "roleuser";
 
 		public static final String MENU = "menu";
 		
