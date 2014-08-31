@@ -14,6 +14,7 @@ import com.contact.user.db.RoleUserDao;
 import com.contact.user.db.UserDao;
 import com.contact.user.model.RoleUser;
 import com.contact.user.model.User;
+import com.contact.util.Result;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 
@@ -78,5 +79,37 @@ public class LoginController extends Controller{
 		mList = Menu.assembleSystemUserMenu(mList);
 		setSessionAttr("menuInfo", mList);
 		redirect("/pages/index.jsp");
+	}
+	
+	@ActionKey("/home/verifyPwd")
+	public void verifyPwd(){
+		String password = getPara("oldPassword");
+		User user = (User)getSessionAttr("userInfo");
+		Result result = new Result();
+		if (password.equals(user.getPassword())){
+			result.setCode("0");
+			result.setName("验证密码");
+			result.setMsg("验证密码成功");
+		}
+		else{
+			result.setCode("1");
+			result.setName("验证密码");
+			result.setMsg("旧密码和系统的不一致!");
+		}
+		renderJson(result);
+	}
+	
+	@ActionKey("/home/modifyPwd")
+	public void modifyPwd(){
+		String password = getPara("newPassword");
+		User user = (User)getSessionAttr("userInfo");
+		UserDao.updatePassword(user.getId(), password);
+		user.setPassword(password);
+		setSessionAttr("userInfo",user);
+		Result result = new Result();
+		result.setCode("0");
+		result.setName("修改密码");
+		result.setMsg("修改密码成功");
+		renderJson(result);
 	}
 }
