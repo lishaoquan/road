@@ -70,7 +70,7 @@
                 modal: true,
                 shadow: true,
                 closed: true,
-                height: 160,
+                height: 200,
                 resizable:false
             });
         }
@@ -79,32 +79,47 @@
             $('#w').window('close');
         }
 
-        
+        function closeLogin(){
+        	close();
+        }
 
         //修改密码
         function serverLogin() {
+        	var $oldpass = $('#txtOldPass');
             var $newpass = $('#txtNewPass');
             var $rePass = $('#txtRePass');
 
+            if ($oldpass.val() == '') {
+                msgShow('系统提示', '请输入旧密码！', 'warning');
+                return false;
+            }
             if ($newpass.val() == '') {
-                msgShow('系统提示', '请输入密码！', 'warning');
+                msgShow('系统提示', '请输入新密码！', 'warning');
                 return false;
             }
             if ($rePass.val() == '') {
-                msgShow('系统提示', '请在一次输入密码！', 'warning');
+                msgShow('系统提示', '请输入确认密码！', 'warning');
                 return false;
             }
 
-            if ($newpass.val() != $rePass.val()) {
-                msgShow('系统提示', '两次密码不一至！请重新输入', 'warning');
-                return false;
-            }
+            $.post("/contact/home/verifyPwd?oldPassword=" + $oldpass.val(), function(msg) {
+            	if (msg.code == '1'){
+            		msgShow('系统提示', '旧密码和系统的不一致，请重新输入!', 'info');
+            		$oldpass.val('');
+            		return false;
+            	}
+                if ($newpass.val() != $rePass.val()) {
+                    msgShow('系统提示', '两次密码不一至！请重新输入', 'warning');
+                    return false;
+                }
 
-            $.post('/ajax/editpassword.ashx?newpass=' + $newpass.val(), function(msg) {
-                msgShow('系统提示', '恭喜，密码修改成功！<br>您的新密码为：' + msg, 'info');
-                $newpass.val('');
-                $rePass.val('');
-                close();
+                $.post("/contact/home/modifyPwd?newPassword=" + $newpass.val(), function(msg) {
+                    msgShow('系统提示', '恭喜，密码修改成功！', 'info');
+                    $oldpass.val('');
+                    $newpass.val('');
+                    $rePass.val('');
+                    close();
+                })
             })
         }
         $(function() {
@@ -141,7 +156,7 @@
     <div region="north" split="true" border="false" style="overflow: hidden; height: 30px;
         background: url(../images/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%;
         line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
-        <span style="float:right; padding-right:20px;" class="head">欢迎 使用本系统 <a href="#" id="editpass">修改密码</a> <a href="#" id="loginOut">安全退出</a></span>
+        <span style="float:right; padding-right:20px;" class="head">${userInfo.userName},欢迎您！ <a href="#" id="editpass">修改密码</a> <a href="#" id="loginOut">安全退出</a></span>
         <span style="padding-left:10px; font-size: 16px; "><img src="<%=context %>/images/blocks.gif" width="20" height="20" align="absmiddle" /></span>
     </div>
     <div region="south" split="true" style="height: 30px; background: #D2E0F2; ">
@@ -241,6 +256,10 @@
         <div class="easyui-layout" fit="true">
             <div region="center" border="false" style="padding: 10px; background: #fff; border: 1px solid #ccc;">
                 <table cellpadding=3>
+                    <tr>
+                        <td>旧密码：</td>
+                        <td><input id="txtOldPass" type="Password" class="txt01" /></td>
+                    </tr>
                     <tr>
                         <td>新密码：</td>
                         <td><input id="txtNewPass" type="Password" class="txt01" /></td>

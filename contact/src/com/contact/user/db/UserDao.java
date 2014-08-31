@@ -106,6 +106,15 @@ public class UserDao {
     }
     
     /**
+     * 更新用户的密码
+     */
+    public static void updatePassword(String id,String password){
+    	String sql = "update " + Constant.TABLE_NAME.USER + " set password = '" + password
+    			+ "' where id = '" + id + "'";
+    	Db.update(sql);
+    }
+    
+    /**
      * 根据主键删除用户信息
      * @param id
      */
