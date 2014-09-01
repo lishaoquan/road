@@ -1,19 +1,13 @@
 package com.contact.product.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import net.sf.json.JSONArray;
 
 import com.contact.model.ProductCategory;
 import com.contact.product.dao.ProductCategoryDao;
-import com.contact.util.TreeNode;
 import com.jfinal.core.Controller;
 
 public class ProductCategoryController extends Controller {
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void index() {
 		List<ProductCategory> categoryList = ProductCategory.dao
 				.getAllCategory();
@@ -21,9 +15,6 @@ public class ProductCategoryController extends Controller {
 		if (null == categoryList || categoryList.isEmpty()){
 			tempRootProductCategory();
 		}
-		Map map = new HashMap();
-		map.put("total", categoryList.size());
-		map.put("rows", categoryList);
 		renderJson(categoryList);
 	}
 
