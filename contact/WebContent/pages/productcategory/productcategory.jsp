@@ -33,7 +33,7 @@
                 animate: true,
                 collapsible: true,
                 fitColumns: true,
-                url: '/contact/category',
+                url: '/contact/category/treeGrig',
                 method: 'get',
                 idField: 'id',
                 treeField: 'name',
@@ -41,9 +41,9 @@
             ">
         <thead>
             <tr>
-                <th data-options="field:'name',width:180">产品类型名称</th>
-                <th data-options="field:'description',width:60,align:'center'">类型描述</th>
-                <th data-options="field:'imageurl',width:80">图片</th>
+                <th data-options="field:'name',width:80">产品类型名称</th>
+                <th data-options="field:'description',width:200,align:'center'">类型描述</th>
+                <th data-options="field:'imageurl',width:100">图片</th>
             </tr>
         </thead>
     </table>
@@ -56,29 +56,41 @@
         <div onclick="expand()">展开</div>
     </div>
     
-       <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+       <div id="dlg" class="easyui-dialog" style="width:450px;height:300px;padding:10px 20px"
             closed="true" buttons="#dlg-buttons">
         <div class="ftitle">产品类型信息</div>
-        <form id="fm" method="post" novalidate>
+        <form id="fm" method="post">
+            <input name="parentId" id="parentId" type="hidden">
             <div class="fitem">
                 <label>类型名称:</label>
-                <input name="name" class="easyui-textbox" required="true">
+                <input name="name" class="easyui-textbox" required="true" width="200">
             </div>
             <div class="fitem">
                 <label>类型图片:</label>
-                <input name="begin" class="easyui-textbox" required="true">
+                <input id="imageUrl" name="imageUrl" class="easyui-filebox" style="width:200px">
             </div>
             <div class="fitem">
                 <label>类型说明:</label>
-                <input name="end" class="easyui-textbox">
+                <input id="description" name="description" class="easyui-textbox">
             </div>
         </form>
     </div>
     <div id="dlg-buttons">
-        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()" style="width:90px">保存</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">取消</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-save" onclick="saveUser()" style="width:90px">保存</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">取消</a>
     </div>
     <script type="text/javascript">
+        $(function(){
+        	$('#description').textbox({
+        		multiline:true,
+        		height:80,
+        		width:200
+        	});
+        	$('#imageUrl').filebox({
+        	    buttonText: '选择图片'
+        	});
+        });
+        
         function formatProgress(value){
             if (value){
                 var s = '<div style="width:100%;border:1px solid #ccc">' +
@@ -97,16 +109,12 @@
                 top: e.pageY
             });
         }
-        var idIndex = 100;
         function append(){
             $('#dlg').dialog('open').dialog('setTitle','新增产品类型');
             $('#fm').form('clear');
-            idIndex++;
-            var d1 = new Date();
-            var d2 = new Date();
-            d2.setMonth(d2.getMonth()+1);
             var node = $('#tg').treegrid('getSelected');
-            $('#tg').treegrid('append',{
+            $("#parentId").val(node.id);
+/*             $('#tg').treegrid('append',{
                 parent: node.id,
                 data: [{
                     id: idIndex,
@@ -116,8 +124,28 @@
                     end: $.fn.datebox.defaults.formatter(d2),
                     progress: parseInt(Math.random()*100)
                 }]
-            })
+            }) */
         }
+        
+        function saveUser(){
+            $('#fm').form('submit',{
+                url:'/contact/category/save',
+                onSubmit: function(){
+                	var isValid = $(this).form('validate');
+            		if (!isValid){
+            			$.messager.alert('info','必要字段未填写完整!');
+            			return false;
+            		}
+            		return true;
+                },
+                success:function(data){
+                	$.messager.alert('info','新增成功!');
+                	$("parentId").val('');
+                	$('#dlg').dialog('close');
+                }
+            });
+        }
+        
         function modify(){
             var row = $('#tg').treegrid('getSelected');
             if (row){

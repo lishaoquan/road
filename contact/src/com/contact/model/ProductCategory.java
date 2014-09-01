@@ -1,10 +1,12 @@
 package com.contact.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import com.contact.util.TreeGridNode;
 import com.contact.util.TreeNode;
 import com.jfinal.plugin.activerecord.Model;
 
@@ -42,4 +44,15 @@ public class ProductCategory extends Model<ProductCategory> {
 		return node;
 	}
 
+	public static List<TreeGridNode> assembleCategoryTreeGrid(List<ProductCategory> categoryList) {
+		List<TreeGridNode> list = new ArrayList<TreeGridNode>();
+		for (ProductCategory category : categoryList) {
+			TreeGridNode node = new TreeGridNode(category.getId(), category.getName());
+			node.set_parentId(category.getParentId());
+			node.setDescription(category.getDescription());
+			node.setImageurl(category.getImageurl());
+			list.add(node);
+		}
+		return list;
+	}
 }
