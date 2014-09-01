@@ -42,7 +42,7 @@ public class ProductCategoryDao {
 	 * @param category
 	 */
 	public static void updateProductCategory(ProductCategory category){
-		ProductCategory.dao.set("id", category.getId()).set("name", category.getName())
+		new ProductCategory().dao.set("id", category.getId()).set("name", category.getName())
 							.set("description", category.getDescription())
 							.set("imageurl", category.getImageurl()).update();
 	}

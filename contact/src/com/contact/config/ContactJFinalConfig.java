@@ -1,5 +1,6 @@
 package com.contact.config;
 
+import com.contact.model.ProductCategory;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -46,7 +47,7 @@ public class ContactJFinalConfig extends JFinalConfig {
 		 me.add(c3p0Plugin);
 		 ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
 		 me.add(arp);
-		// arp.addMapping("user", User.class);
+		 arp.addMapping("productcategory", ProductCategory.class);
 	}
 
 	/**

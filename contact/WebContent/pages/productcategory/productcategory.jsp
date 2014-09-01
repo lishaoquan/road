@@ -33,7 +33,7 @@
                 animate: true,
                 collapsible: true,
                 fitColumns: true,
-                url: 'treegrid_data2.json',
+                url: '/contact/category',
                 method: 'get',
                 idField: 'id',
                 treeField: 'name',
@@ -42,8 +42,8 @@
         <thead>
             <tr>
                 <th data-options="field:'name',width:180">产品类型名称</th>
-                <th data-options="field:'persons',width:60,align:'right'">类型描述</th>
-                <th data-options="field:'begin',width:80">图片</th>
+                <th data-options="field:'description',width:60,align:'center'">类型描述</th>
+                <th data-options="field:'imageurl',width:80">图片</th>
             </tr>
         </thead>
     </table>
