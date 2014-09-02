@@ -10,6 +10,15 @@ import com.contact.util.UUIDUtil;
 public class ProductCategoryDao {
 
 	/**
+	 * 获取所有的产品分类
+	 * 
+	 * @return
+	 */
+	public static List<ProductCategory> getAllCategory() {
+		return ProductCategory.dao.find("select * from productcategory");
+	}
+	
+	/**
 	 * 新增产品分类信息
 	 * @param category
 	 */

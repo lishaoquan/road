@@ -24,15 +24,6 @@ public class ProductCategory extends Model<ProductCategory> {
 	private String imageurl;
 	private String parentId;
 
-	/**
-	 * 获取所有的产品分类
-	 * 
-	 * @return
-	 */
-	public List<ProductCategory> getAllCategory() {
-		return dao.find("select * from productcategory");
-	}
-
 	public static TreeNode assembleCategoryTree(ProductCategory parent,
 			List<ProductCategory> categoryList) {
 		TreeNode node = new TreeNode(parent.getId(), parent.getName());

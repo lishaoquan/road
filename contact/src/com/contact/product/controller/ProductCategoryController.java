@@ -11,24 +11,24 @@ import com.jfinal.core.Controller;
 public class ProductCategoryController extends Controller {
 
 	public void index() {
-		List<ProductCategory> categoryList = ProductCategory.dao
+		List<ProductCategory> categoryList = ProductCategoryDao
 				.getAllCategory();
 		//获取产品分类类型根节点
 		ProductCategory root = getRootProductCategory(categoryList);
 		if (null == categoryList || categoryList.isEmpty()){
-			categoryList = ProductCategory.dao.getAllCategory();
+			categoryList = ProductCategoryDao.getAllCategory();
 		}
 		TreeNode treeNode = ProductCategory.assembleCategoryTree(root, categoryList);
 		renderText(treeNode.toJsonArrayOfNoChecked().toString());
 	}
 
 	public void treeGrig() {
-		List<ProductCategory> categoryList = ProductCategory.dao
+		List<ProductCategory> categoryList = ProductCategoryDao
 				.getAllCategory();
 		//获取产品分类类型根节点
 		if (null == categoryList || categoryList.isEmpty()){
 			constructRootProductCategory();
-			categoryList = ProductCategory.dao.getAllCategory();
+			categoryList = ProductCategoryDao.getAllCategory();
 		}
 		renderJson(ProductCategory.assembleCategoryTreeGrid(categoryList));
 	}
