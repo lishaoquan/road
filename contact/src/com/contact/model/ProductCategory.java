@@ -1,13 +1,11 @@
 package com.contact.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import com.contact.util.TreeGridNode;
-import com.contact.util.TreeNode;
+import com.contact.product.util.TreeGridNode;
 import com.jfinal.plugin.activerecord.Model;
 
 @Data
@@ -24,26 +22,16 @@ public class ProductCategory extends Model<ProductCategory> {
 	private String imageurl;
 	private String parentId;
 
-	public static TreeNode assembleCategoryTree(ProductCategory parent,
+	public static TreeGridNode assembleCategoryTree(ProductCategory parent,
 			List<ProductCategory> categoryList) {
-		TreeNode node = new TreeNode(parent.getId(), parent.getName());
+		TreeGridNode node = new TreeGridNode(parent.getId(), parent.getName());
+		node.setDescription(parent.getDescription());
+		node.setImageurl(parent.getImageurl());
 		for (ProductCategory category : categoryList) {
 			if (parent.getId().equals(category.getParentId())) {
 				node.addChild(assembleCategoryTree(category,categoryList));
 			}
 		}
 		return node;
-	}
-
-	public static List<TreeGridNode> assembleCategoryTreeGrid(List<ProductCategory> categoryList) {
-		List<TreeGridNode> list = new ArrayList<TreeGridNode>();
-		for (ProductCategory category : categoryList) {
-			TreeGridNode node = new TreeGridNode(category.getId(), category.getName());
-			node.set_parentId(category.getParentId());
-			node.setDescription(category.getDescription());
-			node.setImageurl(category.getImageurl());
-			list.add(node);
-		}
-		return list;
 	}
 }

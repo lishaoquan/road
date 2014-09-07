@@ -4,35 +4,25 @@ import java.util.List;
 
 import com.contact.model.ProductCategory;
 import com.contact.product.dao.ProductCategoryDao;
+import com.contact.product.util.TreeGridNode;
 import com.contact.util.Result;
-import com.contact.util.TreeNode;
 import com.jfinal.core.Controller;
 
 public class ProductCategoryController extends Controller {
 
 	public void index() {
-		List<ProductCategory> categoryList = ProductCategoryDao
-				.getAllCategory();
 		//获取产品分类类型根节点
-		ProductCategory root = getRootProductCategory(categoryList);
-		if (null == categoryList || categoryList.isEmpty()){
-			categoryList = ProductCategoryDao.getAllCategory();
+		List<ProductCategory> rootList = ProductCategoryDao.getProductCategoryByParentId("-1");
+		if (null == rootList || rootList.isEmpty()){
+			constructRootProductCategory();
 		}
-		TreeNode treeNode = ProductCategory.assembleCategoryTree(root, categoryList);
+		List<ProductCategory> categoryList = ProductCategoryDao.getAllCategory();
+		ProductCategory root = getRootProductCategory(categoryList);
+		root = getRootProductCategory(categoryList);
+		TreeGridNode treeNode = ProductCategory.assembleCategoryTree(root, categoryList);
 		renderText(treeNode.toJsonArrayOfNoChecked().toString());
 	}
 
-	public void treeGrig() {
-		List<ProductCategory> categoryList = ProductCategoryDao
-				.getAllCategory();
-		//获取产品分类类型根节点
-		if (null == categoryList || categoryList.isEmpty()){
-			constructRootProductCategory();
-			categoryList = ProductCategoryDao.getAllCategory();
-		}
-		renderJson(ProductCategory.assembleCategoryTreeGrid(categoryList));
-	}
-	
 	public void save(){
 		String name = getPara("name");
 		String parentId = getPara("parentId");
@@ -62,7 +52,7 @@ public class ProductCategoryController extends Controller {
 			}
 		}
 		//如果没有获取到则说明数据库中不存在根产品分类类型
-		return constructRootProductCategory();
+		return null;
 	}
 
 	/**
@@ -71,7 +61,6 @@ public class ProductCategoryController extends Controller {
 	 */
 	private ProductCategory constructRootProductCategory() {
 		ProductCategory root = new ProductCategory();
-		root.setId("0");
 		root.setName("顶级分类");
 		root.setDescription("模拟的产品顶级分类");
 		root.setImageurl("");

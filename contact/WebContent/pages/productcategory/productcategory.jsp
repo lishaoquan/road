@@ -33,7 +33,7 @@
                 animate: true,
                 collapsible: true,
                 fitColumns: true,
-                url: '/contact/category/treeGrig',
+                url: '/contact/category',
                 method: 'get',
                 idField: 'id',
                 treeField: 'name',
